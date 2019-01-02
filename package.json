@@ -2,7 +2,7 @@
   "name": "discord-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/maoziyou/discord-app",
+  "homepage": "https://maoziyou.github.io/discord-app",
   "dependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
