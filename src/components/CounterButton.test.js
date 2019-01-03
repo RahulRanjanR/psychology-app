@@ -19,8 +19,4 @@ wrapper.find('[id="counter"]').simulate('keypress');
 expect(wrapper.state()).toEqual({ count: 2 });
 expect(wrapper.props().color).toEqual('red');
 
-
-
-
-
 })
