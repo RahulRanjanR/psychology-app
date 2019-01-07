@@ -22,7 +22,7 @@ filterRobots = () => {
   })
 }
   render() {
-    const { robots, onSearchChange, isPending } = this.props;
+  /* robots*/  const {  onSearchChange, isPending } = this.props;
 
     return (
       <div className='tc'>
