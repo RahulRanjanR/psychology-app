@@ -1,3 +1,17 @@
+
+/* 01/10/2019 Objectives
+
+(*) Change the routing for Register to after the QuizPage
+(*)  Combine QuizPage and Register into one Page
+
+/* 01/11/2019 Objectives
+
+() Turn the QuizPage into a functional quiz format
+
+*/
+
+
+
 import React, { Component } from 'react';
 // *****************smart-brain features*****************
 import Clarifai from 'clarifai';
@@ -5,8 +19,8 @@ import Particles from 'react-particles-js';
 import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 import Navigation from '../components/Navigation/Navigation';
 import Signin from '../components/Signin/Signin';
+import QuizPage from '../components/QuizPage/QuizPage';
 import Register from '../components/Register/Register';
-
 import Logo from '../components/Logo/Logo';
 import ImageLinkForm from '../components/ImageLinkForm/ImageLinkForm';
 import Rank from '../components/Rank/Rank';
@@ -97,20 +111,33 @@ class App extends Component {
           <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
           {route === 'home'
             ? <div>
-                  <Logo />
-                  <Rank />
-                  <ImageLinkForm
-                   onInputChange={this.onInputChange}
-                   onButtonSumbit={this.onButtonSubmit}
-                   />
-                  <FaceRecognition box={box} imageUrl={imageUrl} />
+           <MainPage { ...this.props } />
                   </div>
                   : (
                     route === 'signin'
                     ?
                       <Signin onRouteChange={this.onRouteChange} />
-                    : <Register onRouteChange={this.onRouteChange} />
-              )    
+                    :  (
+                      route === 'signout'
+                      ?
+                        <Signin onRouteChange={this.onRouteChange} />
+                      : (
+                        route === 'quizpage'
+                        ?
+                          <QuizPage onRouteChange={this.onRouteChange} />
+                        : <div>
+                              <Logo />
+                              <Rank />
+                              <ImageLinkForm
+                               onInputChange={this.onInputChange}
+                               onButtonSumbit={this.onButtonSubmit}
+                               />
+                              <FaceRecognition box={box} imageUrl={imageUrl} />
+                              </div>
+
+                    )
+                  )
+              )
             }
           </div>
         );
@@ -128,8 +155,19 @@ export default connect(mapStateToProps, mapDispatchToProps)(App)
 
 
 
+/*
 
+<div>
+      <Logo />
+      <Rank />
+      <ImageLinkForm
+       onInputChange={this.onInputChange}
+       onButtonSumbit={this.onButtonSubmit}
+       />
+      <FaceRecognition box={box} imageUrl={imageUrl} />
+      </div>
 
+      */
 
 
     // const particlesOptions = {
