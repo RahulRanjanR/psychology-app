@@ -1,16 +1,21 @@
 
 /* 01/10/2019 Objectives
-
+------------------------------------------------------
 (*) Change the routing for Register to after the QuizPage
 (*)  Combine QuizPage and Register into one Page
-
-/* 01/11/2019 Objectives
-
+------------------------------------------------------
+^ 01/11/2019 Objectives
+------------------------------------------------------
+(*) Organize Folders
 () Turn the QuizPage into a functional quiz format
-
+() Integrate the questions to result in the correct types
+------------------------------------------------------
+^ 01/12/2019 Objectives
+------------------------------------------------------
+() Input the data into the user server/database as the user.type
+()
+------------------------------------------------------
 */
-
-
 
 import React, { Component } from 'react';
 // *****************smart-brain features*****************
@@ -19,7 +24,6 @@ import Particles from 'react-particles-js';
 import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 import Navigation from '../components/Navigation/Navigation';
 import Signin from '../components/Signin/Signin';
-import QuizPage from '../components/QuizPage/QuizPage';
 import Register from '../components/Register/Register';
 import Logo from '../components/Logo/Logo';
 import ImageLinkForm from '../components/ImageLinkForm/ImageLinkForm';
@@ -27,7 +31,7 @@ import Rank from '../components/Rank/Rank';
 // *****************smart-brain features*****************
 import { connect } from 'react-redux';
 import { setSearchField, requestRobots } from '../actions';
-import MainPage from '../components/MainPage';
+import MainPage from '../components/UserSearchPage/MainPage';
 import './App.css';
 
 const app = new Clarifai.App({
@@ -122,9 +126,9 @@ class App extends Component {
                       ?
                         <Signin onRouteChange={this.onRouteChange} />
                       : (
-                        route === 'quizpage'
+                        route === 'register'
                         ?
-                          <QuizPage onRouteChange={this.onRouteChange} />
+                          <Register onRouteChange={this.onRouteChange} />
                         : <div>
                               <Logo />
                               <Rank />

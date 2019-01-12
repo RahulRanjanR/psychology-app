@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import CardList from '../components/CardList';
-import SearchBox from '../components/SearchBox';
-import Scroll from '../components/Scroll';
-import ErrorBoundry from '../components/ErrorBoundry';
-import Header from '../components/Header';
+import CardList from './CardList';
+import SearchBox from './SearchBox';
+import Scroll from './Scroll';
+import ErrorBoundry from './ErrorBoundry';
+import Header from './Header';
 
 import './MainPage.css';
 

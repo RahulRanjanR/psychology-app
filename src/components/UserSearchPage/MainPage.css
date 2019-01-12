@@ -4,7 +4,7 @@
 font-family: 'Super Renewables Regular';
 font-style: normal;
 font-weight: normal;
-src: local('Super Renewables Regular'), url('../containers/Super Renewables.woff') format('woff');
+src: local('Super Renewables Regular'), url('../../containers/Super Renewables.woff') format('woff');
 }
 
 h1 {
