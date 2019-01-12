@@ -14,7 +14,7 @@ class Header extends Component {
     console.log('header')
     return (
       <div>
-        <h1 className='f1'>*DiscordFriends*</h1>
+        <h1 className='f1'>Pysch Friends</h1>
         <CounterButton />
       </div>
     );

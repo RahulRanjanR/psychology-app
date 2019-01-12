@@ -1,16 +1,37 @@
+
+/* 01/10/2019 Objectives
+------------------------------------------------------
+(*) Change the routing for Register to after the QuizPage
+(*)  Combine QuizPage and Register into one Page
+------------------------------------------------------
+^ 01/11/2019 Objectives
+------------------------------------------------------
+(*) Organize Folders
+() Turn the QuizPage into a functional quiz format
+() Integrate the questions to result in the correct types
+------------------------------------------------------
+^ 01/12/2019 Objectives
+------------------------------------------------------
+() Input the data into the user server/database as the user.type
+()
+------------------------------------------------------
+*/
+
 import React, { Component } from 'react';
 // *****************smart-brain features*****************
 import Clarifai from 'clarifai';
 import Particles from 'react-particles-js';
 import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 import Navigation from '../components/Navigation/Navigation';
+import Signin from '../components/Signin/Signin';
+import Register from '../components/Register/Register';
 import Logo from '../components/Logo/Logo';
 import ImageLinkForm from '../components/ImageLinkForm/ImageLinkForm';
 import Rank from '../components/Rank/Rank';
 // *****************smart-brain features*****************
 import { connect } from 'react-redux';
 import { setSearchField, requestRobots } from '../actions';
-import MainPage from '../components/MainPage';
+import MainPage from '../components/UserSearchPage/MainPage';
 import './App.css';
 
 const app = new Clarifai.App({
@@ -40,44 +61,92 @@ class App extends Component {
     this.state = {
       input: '',
       imageUrl: '',
+      box: {},
+      route: 'signin',
+      isSignedIn: false,
     }
   }
+  calculateFaceLocation = (data) => {
+    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+    const image = document.getElementById('inputImage');
+    const width = Number(image.width);
+    const height = Number(image.height);
+    return {
+      leftCol: clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
+      rightCol: width - (clarifaiFace.right_col * width ),
+      bottomRow: height - (clarifaiFace.bottom_row * height)
+
+    }
+
+  }
+
+  displayFaceBox = (box) => {
+    this.setState({box: box})
+  }
+
 
   onInputChange = (event) => {
       this.setState({input: event.target.value});
   }
+
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input})
     app.models.predict(
       Clarifai.FACE_DETECT_MODEL,
       this.state.input)
-      .then(
-      function(response) {
-        console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
-        // do something with response
-      },
-      function(err) {
-        // there was an error
-      }
-    );
+      .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))
+      .catch(err => console.log(err));
+  }
+
+  onRouteChange = (route) => {
+    if(route === 'signout') {
+      this.setState({isSignedIn: false})
+    } else if (route === 'home') {
+      this.setState({isSignedIn: true})
+    }
+    this.setState({route: route});
   }
 
   render() {
-    return (
-      <div className="App">
+    const  { isSignedIn, imageUrl, route, box } = this.state;
+      return (
+        <div className="App">
+          <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+          {route === 'home'
+            ? <div>
+           <MainPage { ...this.props } />
+                  </div>
+                  : (
+                    route === 'signin'
+                    ?
+                      <Signin onRouteChange={this.onRouteChange} />
+                    :  (
+                      route === 'signout'
+                      ?
+                        <Signin onRouteChange={this.onRouteChange} />
+                      : (
+                        route === 'register'
+                        ?
+                          <Register onRouteChange={this.onRouteChange} />
+                        : <div>
+                              <Logo />
+                              <Rank />
+                              <ImageLinkForm
+                               onInputChange={this.onInputChange}
+                               onButtonSumbit={this.onButtonSubmit}
+                               />
+                              <FaceRecognition box={box} imageUrl={imageUrl} />
+                              </div>
 
-        <Navigation />
-        <Logo />
-        <Rank />
-        <ImageLinkForm
-         onInputChange={this.onInputChange}
-         onButtonSumbit={this.onButtonSubmit}
-         />
-        <FaceRecognition imageUrl={this.state.imageUrl} />
-      </div>
-    );
-  }
-}
+                    )
+                  )
+              )
+            }
+          </div>
+        );
+      }
+    }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
 
@@ -90,8 +159,19 @@ export default connect(mapStateToProps, mapDispatchToProps)(App)
 
 
 
+/*
 
+<div>
+      <Logo />
+      <Rank />
+      <ImageLinkForm
+       onInputChange={this.onInputChange}
+       onButtonSumbit={this.onButtonSubmit}
+       />
+      <FaceRecognition box={box} imageUrl={imageUrl} />
+      </div>
 
+      */
 
 
     // const particlesOptions = {
