@@ -1,0 +1,16 @@
+ select{
+   border-color: black;
+   border-radius: 10%;
+   text-align-last:center;
+}
+
+input{
+  border-color: black;
+  border-radius: 10%;
+  text-align-last:center;
+}
+button{
+  border-color: black;
+  border-radius: 10%;
+  text-align-last:center;
+}

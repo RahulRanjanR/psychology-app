@@ -18,18 +18,24 @@
 */
 
 import React, { Component } from 'react';
+import App from './App';
 // ***************** Quiz Features*****************
+import Tilt from 'react-tilt';
+import psychology from '../components/Logo/psychology.png';
 import '../components/Logo/Logo.css';
 import quizQuestions from '../api/quizQuestions';
 import Quiz from '../components/Quiz/Quiz';
-import QuizPage from './QuizPage';
 import Result from '../components/Quiz/Result';
+// ***************** Quiz Features*****************
+
 // *****************smart-brain features*****************
 import Clarifai from 'clarifai';
+import Particles from 'react-particles-js';
 import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 import Navigation from '../components/Navigation/Navigation';
 import Signin from '../components/Signin/Signin';
 import Register from '../components/Register/Register';
+import Logo from '../components/Logo/Logo';
 import ImageLinkForm from '../components/ImageLinkForm/ImageLinkForm';
 import Rank from '../components/Rank/Rank';
 // *****************smart-brain features*****************
@@ -42,6 +48,15 @@ const app = new Clarifai.App({
  apiKey: '9a8ca46ac9bf443a9d35f6de69d313f0'
 });
 
+const ColoredLine = ({ color }) => (
+  <hr
+      style={{
+          color: color,
+          backgroundColor: color,
+          height: 5
+      }}
+  />
+);
 
 const mapStateToProps = (state) => {
   return {
@@ -60,7 +75,7 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-class App extends Component {
+class Test extends Component {
   constructor() {
     super();
     this.state = {
@@ -233,45 +248,44 @@ renderResult() {
           <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
           {route === 'home'
             ? <div>
-
            <MainPage { ...this.props } />
-           </div>
+                  </div>
                   : (
                     route === 'signin'
                     ?
-                    <Signin onRouteChange={this.onRouteChange} />
+                      <Signin onRouteChange={this.onRouteChange} />
                     :  (
                       route === 'signout'
                       ?
                       <Signin onRouteChange={this.onRouteChange} />
                       : (
-                        route === 'quiz'
+                        route === 'register'
                         ?
-                        <QuizPage onRouteChange={this.onRouteChange}  />
-                           : (
-                             route === 'register'
-                             ?
-                             <Register onRouteChange={this.onRouteChange} />
-                             :  (
-                               route === 'mystery'
-                               ?
-                                 <div>
-                                 <Rank />
-                                 <ImageLinkForm
-                                  onInputChange={this.onInputChange}
-                                  onButtonSumbit={this.onButtonSubmit}
-                                  question= {quizQuestions[0].question}
+                        <div className="App">
+                        <div className="App-header ma4 mt0">
+                        <Tilt className="Tilt br2 shadow-2 center" options={{ max : 55 }} style={{ height: 150, width: 150 }} >
+                          <div className="Tilt-inner tc pa3 ">
+                          <img style={{paddingTop: '5px'}}alt='psychology logo'src={psychology}
+                          />
+                           </div>
+                        </Tilt>
+                        <h2 className='f1'>React Quiz</h2>
+                        <ColoredLine color="black" />
+                        </div>
+                        {this.state.result ? this.renderResult() : this.renderQuiz()}
+                        </div>                           :
+                           <div>
+                              <Logo />
+                              <Rank />
+                              <ImageLinkForm
+                               onInputChange={this.onInputChange}
+                               onButtonSumbit={this.onButtonSubmit}
+                               />
+                              <FaceRecognition box={box} imageUrl={imageUrl} />
+                              </div>
 
-                                  />
-                                 <FaceRecognition box={box} imageUrl={imageUrl} />
-                                 </div>
-                                 : (
-                                 <h1>You seem lost...</h1>
-                              )
-                            )
                     )
                   )
-                )
               )
             }
           </div>
@@ -279,7 +293,7 @@ renderResult() {
       }
     }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(Test)
 
 //******************************************************************//
 
