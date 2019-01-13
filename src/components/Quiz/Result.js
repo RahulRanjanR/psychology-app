@@ -16,6 +16,7 @@ function Result(props) {
       <div>
         You prefer <strong>{props.quizResult}</strong>!
       </div>
+
     </CSSTransitionGroup>
   );
 }

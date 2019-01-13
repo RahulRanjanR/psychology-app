@@ -254,33 +254,39 @@ renderResult() {
                   : (
                     route === 'signin'
                     ?
-                      <Signin onRouteChange={this.onRouteChange} />
+                    <Signin onRouteChange={this.onRouteChange} />
                     :  (
                       route === 'signout'
                       ?
                       <Signin onRouteChange={this.onRouteChange} />
                       : (
-                        route === 'register'
+                        route === 'quiz'
                         ?
-                        <div>
-                        <QuizPage />
-                        </div>
-                           :
-                           <div>
-                               <Rank />
-                               <ImageLinkForm
-                                onInputChange={this.onInputChange}
-                                onButtonSumbit={this.onButtonSubmit}
-                                question= {quizQuestions[0].question}
+                        <QuizPage onRouteChange={this.onRouteChange}  />
+                           : (
+                             route === 'register'
+                             ?
+                             <Register onRouteChange={this.onRouteChange} />
+                             :  (
+                               route === 'mystery'
+                               ?
+                                 <div>
+                                 <Rank />
+                                 <ImageLinkForm
+                                  onInputChange={this.onInputChange}
+                                  onButtonSumbit={this.onButtonSubmit}
+                                  question= {quizQuestions[0].question}
 
-                                />
-                               <FaceRecognition box={box} imageUrl={imageUrl} />
-                              </div>
-
-
-
+                                  />
+                                 <FaceRecognition box={box} imageUrl={imageUrl} />
+                                 </div>
+                                 : (
+                                 <h1>You seem lost...</h1>
+                              )
+                            )
                     )
                   )
+                )
               )
             }
           </div>

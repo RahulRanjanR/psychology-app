@@ -21,13 +21,17 @@ const Signin = ({onRouteChange}) => {
           onClick={() => onRouteChange('home')}
           className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
           type="submit"
-          value="Sign in"/>
+          value="Log in"/>
         </div>
-        <div className="lh-copy mt3">
-          <p
-          onClick={() => onRouteChange('register')}
-          className="f6 link dim black db pointer">Register</p>
+        <div>
+        <p></p>
         </div>
+
+        <input
+        onClick={() => onRouteChange('quiz')}
+        className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+        type="submit"
+        value="Take The Quiz"/>
       </div>
     </main>
     </article>
