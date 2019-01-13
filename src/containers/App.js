@@ -19,23 +19,17 @@
 
 import React, { Component } from 'react';
 // ***************** Quiz Features*****************
-import Tilt from 'react-tilt'
-import psychology from '../components/Logo/psychology.png';
 import '../components/Logo/Logo.css';
 import quizQuestions from '../api/quizQuestions';
 import Quiz from '../components/Quiz/Quiz';
 import QuizPage from './QuizPage';
 import Result from '../components/Quiz/Result';
-// ***************** Quiz Features*****************
-
 // *****************smart-brain features*****************
 import Clarifai from 'clarifai';
-import Particles from 'react-particles-js';
 import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 import Navigation from '../components/Navigation/Navigation';
 import Signin from '../components/Signin/Signin';
 import Register from '../components/Register/Register';
-import Logo from '../components/Logo/Logo';
 import ImageLinkForm from '../components/ImageLinkForm/ImageLinkForm';
 import Rank from '../components/Rank/Rank';
 // *****************smart-brain features*****************
@@ -48,15 +42,6 @@ const app = new Clarifai.App({
  apiKey: '9a8ca46ac9bf443a9d35f6de69d313f0'
 });
 
-const ColoredLine = ({ color }) => (
-  <hr
-      style={{
-          color: color,
-          backgroundColor: color,
-          height: 5
-      }}
-  />
-);
 
 const mapStateToProps = (state) => {
   return {

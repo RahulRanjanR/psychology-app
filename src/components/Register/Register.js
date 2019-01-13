@@ -1,5 +1,6 @@
 
 import React from 'react';
+import './Register.css';
 
 const Register = ({onRouteChange}) => {
   return  (
@@ -18,7 +19,7 @@ const Register = ({onRouteChange}) => {
           />
           <div className="mt3">
 
-            <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
+            <label className="db fw6 lh-copy f6" htmlFor="name">Name/Discord</label>
             <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="name"  id="name"/>
           </div>
           <div className="mt3">
@@ -31,14 +32,25 @@ const Register = ({onRouteChange}) => {
           </div>
 
           <div className="mt3">
-          <label className="db fw6 lh-copy f6" htmlFor="password">Testing Format </label>
-
-            <input className="pa2" type="radio" name="gender" value="male" checked/> Male
-            <input className="pa2" type="radio" name="gender" value="male" checked/> Male
-
-            <label className="db fw6 lh-copy f6" htmlFor="password">Testing Format </label>
-
-
+          <label className="db fw6 lh-copy f6" htmlFor="">Choose Your Quiz Result </label>
+            <select className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 cognitive'>
+              <option value="" disabled selected>Cognitive Ego</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="hurr">Ti Ne Si Fe</option>
+            </select>
             </div>
         </fieldset>
         <div className="">
@@ -46,7 +58,7 @@ const Register = ({onRouteChange}) => {
           onClick={() => onRouteChange('home')}
           className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
           type="submit"
-          value="Reveal Your Traits"
+          value="Join Our Group!"
           />
         </div>
       </div>
