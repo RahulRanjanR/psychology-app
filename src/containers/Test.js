@@ -18,8 +18,9 @@
 */
 
 import React, { Component } from 'react';
+import App from './App';
 // ***************** Quiz Features*****************
-import Tilt from 'react-tilt'
+import Tilt from 'react-tilt';
 import psychology from '../components/Logo/psychology.png';
 import '../components/Logo/Logo.css';
 import quizQuestions from '../api/quizQuestions';
@@ -74,7 +75,7 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-class App extends Component {
+class Test extends Component {
   constructor() {
     super();
     this.state = {
@@ -247,20 +248,7 @@ renderResult() {
           <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
           {route === 'home'
             ? <div>
-            <div className="App">
-            <div className="App-header ma4 mt0">
-            <Tilt className="Tilt br2 shadow-2 center" options={{ max : 55 }} style={{ height: 150, width: 150 }} >
-              <div className="Tilt-inner tc pa3 ">
-              <img style={{paddingTop: '5px'}}alt='psychology logo'src={psychology}
-              />
-               </div>
-            </Tilt>
-            <h2 className='f1'>React Quiz</h2>
-            <ColoredLine color="black" />
-            </div>
-             {this.state.result ? this.renderResult() : this.renderQuiz()}
            <MainPage { ...this.props } />
-           </div>
                   </div>
                   : (
                     route === 'signin'
@@ -273,30 +261,25 @@ renderResult() {
                       : (
                         route === 'register'
                         ?
-                           <Register onRouteChange={this.onRouteChange} />
-                           :
-                           <div>
-                           <div className="App">
-                           <div className="App-header ma4 mt0">
-                           <Tilt className="Tilt br2 shadow-2 center" options={{ max : 55 }} style={{ height: 150, width: 150 }} >
-                             <div className="Tilt-inner tc pa3 ">
-                             <img style={{paddingTop: '5px'}}alt='psychology logo'src={psychology}
-                             />
-                              </div>
-                           </Tilt>
-                           <h2 className='f1'>React Quiz</h2>
-                           <ColoredLine color="black" />
+                        <div className="App">
+                        <div className="App-header ma4 mt0">
+                        <Tilt className="Tilt br2 shadow-2 center" options={{ max : 55 }} style={{ height: 150, width: 150 }} >
+                          <div className="Tilt-inner tc pa3 ">
+                          <img style={{paddingTop: '5px'}}alt='psychology logo'src={psychology}
+                          />
                            </div>
-
-                            {this.state.result ? this.renderResult() : this.renderQuiz()}
-                            </div>
+                        </Tilt>
+                        <h2 className='f1'>React Quiz</h2>
+                        <ColoredLine color="black" />
+                        </div>
+                        {this.state.result ? this.renderResult() : this.renderQuiz()}
+                        </div>                           :
+                           <div>
                               <Logo />
                               <Rank />
                               <ImageLinkForm
                                onInputChange={this.onInputChange}
                                onButtonSumbit={this.onButtonSubmit}
-                               question= {quizQuestions[0].question}
-
                                />
                               <FaceRecognition box={box} imageUrl={imageUrl} />
                               </div>
@@ -310,7 +293,7 @@ renderResult() {
       }
     }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(Test)
 
 //******************************************************************//
 
