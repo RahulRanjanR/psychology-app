@@ -247,21 +247,9 @@ renderResult() {
           <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
           {route === 'home'
             ? <div>
-            <div className="App">
-            <div className="App-header ma4 mt0">
-            <Tilt className="Tilt br2 shadow-2 center" options={{ max : 55 }} style={{ height: 150, width: 150 }} >
-              <div className="Tilt-inner tc pa3 ">
-              <img style={{paddingTop: '5px'}}alt='psychology logo'src={psychology}
-              />
-               </div>
-            </Tilt>
-            <h2 className='f1'>React Quiz</h2>
-            <ColoredLine color="black" />
-            </div>
-             {this.state.result ? this.renderResult() : this.renderQuiz()}
+
            <MainPage { ...this.props } />
            </div>
-                  </div>
                   : (
                     route === 'signin'
                     ?
@@ -276,30 +264,35 @@ renderResult() {
                            <Register onRouteChange={this.onRouteChange} />
                            :
                            <div>
-                           <div className="App">
-                           <div className="App-header ma4 mt0">
-                           <Tilt className="Tilt br2 shadow-2 center" options={{ max : 55 }} style={{ height: 150, width: 150 }} >
-                             <div className="Tilt-inner tc pa3 ">
-                             <img style={{paddingTop: '5px'}}alt='psychology logo'src={psychology}
-                             />
-                              </div>
-                           </Tilt>
-                           <h2 className='f1'>React Quiz</h2>
-                           <ColoredLine color="black" />
-                           </div>
 
-                            {this.state.result ? this.renderResult() : this.renderQuiz()}
-                            </div>
-                              <Logo />
-                              <Rank />
-                              <ImageLinkForm
-                               onInputChange={this.onInputChange}
-                               onButtonSumbit={this.onButtonSubmit}
-                               question= {quizQuestions[0].question}
+                              <ColoredLine color="black" />
 
-                               />
-                              <FaceRecognition box={box} imageUrl={imageUrl} />
+                              <div className="App">
+                              <div className="App-header ma4 mt0">
+                              <Tilt className="Tilt br2 shadow-2 center" options={{ max : 55 }} style={{ height: 150, width: 150 }} >
+                                <div className="Tilt-inner tc pa3 ">
+                                <img style={{paddingTop: '5px'}}alt='psychology logo'src={psychology}
+                                />
+                                 </div>
+                              </Tilt>
+                              <h2 className='f1'>React Quiz</h2>
                               </div>
+
+                               {this.state.result ? this.renderResult() : this.renderQuiz()}
+                               </div>
+                               <ColoredLine color="black" />
+
+                               <Rank />
+                               <ImageLinkForm
+                                onInputChange={this.onInputChange}
+                                onButtonSumbit={this.onButtonSubmit}
+                                question= {quizQuestions[0].question}
+
+                                />
+                               <FaceRecognition box={box} imageUrl={imageUrl} />
+                              </div>
+
+
 
                     )
                   )
