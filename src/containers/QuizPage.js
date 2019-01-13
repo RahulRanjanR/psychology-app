@@ -1,22 +1,3 @@
-
-/* 01/10/2019 Objectives
-------------------------------------------------------
-(*) Change the routing for Register to after the QuizPage
-(*)  Combine QuizPage and Register into one Page
-------------------------------------------------------
-^ 01/11/2019 Objectives
-------------------------------------------------------
-(*) Organize Folders
-(*) Turn the QuizPage into a functional quiz format
-() Integrate the questions to result in the correct types
-------------------------------------------------------
-^ 01/12/2019 Objectives
-------------------------------------------------------
-() Input the data into the user server/database as the user.type
-()
-------------------------------------------------------
-*/
-
 import React, { Component } from 'react';
 // ***************** Quiz Features*****************
 import Tilt from 'react-tilt'
@@ -24,7 +5,6 @@ import psychology from '../components/Logo/psychology.png';
 import '../components/Logo/Logo.css';
 import quizQuestions from '../api/quizQuestions';
 import Quiz from '../components/Quiz/Quiz';
-import QuizPage from './QuizPage';
 import Result from '../components/Quiz/Result';
 // ***************** Quiz Features*****************
 
@@ -42,7 +22,6 @@ import Rank from '../components/Rank/Rank';
 import { connect } from 'react-redux';
 import { setSearchField, requestRobots } from '../actions';
 import MainPage from '../components/UserSearchPage/MainPage';
-import './App.css';
 
 const app = new Clarifai.App({
  apiKey: '9a8ca46ac9bf443a9d35f6de69d313f0'
@@ -75,7 +54,7 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-class App extends Component {
+class QuizPage extends Component {
   constructor() {
     super();
     this.state = {
@@ -244,90 +223,25 @@ renderResult() {
   render() {
     const  { isSignedIn, imageUrl, route, box } = this.state;
       return (
-        <div className="App">
-          <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
-          {route === 'home'
-            ? <div>
+          <div>
+          <ColoredLine color="black" />
 
-           <MainPage { ...this.props } />
-           </div>
-                  : (
-                    route === 'signin'
-                    ?
-                      <Signin onRouteChange={this.onRouteChange} />
-                    :  (
-                      route === 'signout'
-                      ?
-                      <Signin onRouteChange={this.onRouteChange} />
-                      : (
-                        route === 'register'
-                        ?
-                        <div>
-                        <QuizPage />
-                        </div>
-                           :
-                           <div>
-                               <Rank />
-                               <ImageLinkForm
-                                onInputChange={this.onInputChange}
-                                onButtonSumbit={this.onButtonSubmit}
-                                question= {quizQuestions[0].question}
-
-                                />
-                               <FaceRecognition box={box} imageUrl={imageUrl} />
-                              </div>
-
-
-
-                    )
-                  )
-              )
-            }
+          <div className="App">
+          <div className="App-header ma4 mt0">
+          <Tilt className="Tilt br2 shadow-2 center" options={{ max : 55 }} style={{ height: 150, width: 150 }} >
+            <div className="Tilt-inner tc pa3 ">
+            <img style={{paddingTop: '5px'}}alt='psychology logo'src={psychology}
+            />
+             </div>
+          </Tilt>
+          <h2 className='f1'>React Quiz</h2>
           </div>
+
+           {this.state.result ? this.renderResult() : this.renderQuiz()}
+           </div>
+           <ColoredLine color="black" />          </div>
         );
       }
     }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
-
-//******************************************************************//
-
-// goes in the render() for route page
-    // return <MainPage { ...this.props } />
-
-//******************************************************************//
-
-
-
-/*
-
-<div>
-      <Logo />
-      <Rank />
-      <ImageLinkForm
-       onInputChange={this.onInputChange}
-       onButtonSumbit={this.onButtonSubmit}
-       />
-      <FaceRecognition box={box} imageUrl={imageUrl} />
-      </div>
-
-      */
-
-
-    // const particlesOptions = {
-    //     particles: {
-    //       number: {
-    //         value: 90,
-    //         density: {
-    //           emable: true,
-    //           value_area: 800
-    //         }
-    //       }
-    //     }
-    //   }
-
-
-    // insert this into the return if wanted
-    // <Particles className='particles'
-    //     params={particlesOptions}
-    //   />
+export default connect(mapStateToProps, mapDispatchToProps)(QuizPage)
