@@ -8,14 +8,8 @@
 ------------------------------------------------------
 (*) Organize Folders
 (*) Turn the QuizPage into a functional quiz format
-() Integrate the questions to result in the correct types
-------------------------------------------------------
-^ 01/12/2019 Objectives
-------------------------------------------------------
-() Input the data into the user server/database as the user.type
-()
-------------------------------------------------------
-*/
+(*) Integrate the questions to result in the correct types
+/*/
 
 import React, { Component } from 'react';
 // ***************** Quiz Features*****************

@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
 // ***************** Quiz Features*****************
-import Tilt from 'react-tilt'
-import psychology from '../components/Logo/psychology.png';
-import '../components/Logo/Logo.css';
+
 import quizQuestions from '../api/quizQuestions';
 import Quiz from '../components/Quiz/Quiz';
-import Result from '../components/Quiz/Result';
-// *****************smart-brain features*****************
-import Clarifai from 'clarifai';
+import Result2 from '../components/Quiz/Result2';
+
 // *****************smart-brain features*****************
 import { connect } from 'react-redux';
 import { setSearchField, requestRobots } from '../actions';
-
-const app = new Clarifai.App({
- apiKey: '9a8ca46ac9bf443a9d35f6de69d313f0'
-});
 
 const ColoredLine = ({ color }) => (
   <hr
@@ -43,7 +36,7 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-class QuizPage extends Component {
+class QuizPage2 extends Component {
   constructor() {
     super();
     this.state = {
@@ -140,12 +133,10 @@ getResults() {
     console.log(result);
     console.log(result[0]);
     if (result.length === 1) {
+      this.setState({ result: "anyone"  });
       if(result[0].includes('Direct_Initiating_Control')) {
-        this.setState({ result: "Direct Initiating Control : ESTJ , ESTP , ENTJ , ENFJ "});
-    } else if
-        (result[0].includes('Informative_Initiating_Movement')) {
-          this.setState({ result: result[0] + ": ESFJ , ESFP , ENTP , ENFP "});
-  }
+        this.setState({ result: "ohhh yeeee"  });
+    }
   }
 }
 
@@ -163,75 +154,18 @@ getResults() {
 }
 
 renderResult() {
-  return <Result quizResult={this.state.result} />;
+  return <Result2 quizResult={this.state.result} />;
 }
 
-
-  calculateFaceLocation = (data) => {
-    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
-    const image = document.getElementById('inputImage');
-    const width = Number(image.width);
-    const height = Number(image.height);
-    return {
-      leftCol: clarifaiFace.left_col * width,
-      topRow: clarifaiFace.top_row * height,
-      rightCol: width - (clarifaiFace.right_col * width ),
-      bottomRow: height - (clarifaiFace.bottom_row * height)
-
-    }
-
-  }
-
-  displayFaceBox = (box) => {
-    this.setState({box: box})
-  }
-
-
-  onInputChange = (event) => {
-      this.setState({input: event.target.value});
-  }
-
-  onButtonSubmit = () => {
-    this.setState({imageUrl: this.state.input})
-    app.models.predict(
-      Clarifai.FACE_DETECT_MODEL,
-      this.state.input)
-      .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))
-      .catch(err => console.log(err));
-  }
-
-  onRouteChange = (route) => {
-    if(route === 'signout') {
-      this.setState({isSignedIn: false})
-    } else if (route === 'home') {
-      this.setState({isSignedIn: true})
-    }
-    this.setState({route: route});
-  }
 
 
   render() {
       return (
-          <div>
-          <ColoredLine color="black" />
-
-          <div className="App">
-          <div className="App-header ma4 mt0">
-          <Tilt className="Tilt br2 shadow-2 center" options={{ max : 55 }} style={{ height: 150, width: 150 }} >
-            <div className="Tilt-inner tc pa3 ">
-            <img style={{paddingTop: '5px'}}alt='psychology logo'src={psychology}
-            />
-             </div>
-          </Tilt>
-          <h2 className='f1'>React Quiz</h2>
-          </div>
-
+<div>
            {this.state.result ? this.renderResult() : this.renderQuiz()}
-           </div>
-           <ColoredLine color="black" />
            </div>
         );
       }
     }
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuizPage)
+export default connect(mapStateToProps, mapDispatchToProps)(QuizPage2)
