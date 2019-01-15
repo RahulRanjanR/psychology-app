@@ -1,6 +1,8 @@
 
 import React from 'react';
 import './Register.css';
+import  SomeComponent from './SomeComponent';
+
 
 const Register = ({onRouteChange}) => {
   return  (
@@ -46,7 +48,7 @@ const Register = ({onRouteChange}) => {
               <option value="mbti">Finisher & Guardian : ISTJ</option>
               <option value="mbti">Finisher & Artisan : ISTP</option>
               <option value="mbti">Finisher & Intellectual : INTJ</option>
-              <option value="mbti">Finisher & Idealists : INFJ</option>
+              <option value="mbti">Finisher & Idealist : INFJ</option>
               <option value="mbti">Background & Guardian : ISFJ</option>
               <option value="mbti">Background & Artisan : ISFP</option>
               <option value="mbti">Background & Intellectual : INTP</option>
@@ -61,11 +63,13 @@ const Register = ({onRouteChange}) => {
           type="submit"
           value="Join Our Group!"
           />
+          <SomeComponent />
         </div>
       </div>
     </main>
     </article>
   );
 }
+
 
 export default Register;

@@ -13,4 +13,9 @@ button{
   border-color: black;
   border-radius: 10%;
   text-align-last:center;
+  background:  transparent;
+}
+a {
+  color: black;
+  
 }
