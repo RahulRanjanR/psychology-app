@@ -15,7 +15,7 @@ function Result2(props) {
       transitionAppearTimeout={500}
     >
       <div className='f2'>
-        Your Temperament Style is <strong>{props.quizResult}</strong>
+         Temperament Style is <strong><i>{props.quizResult}</i></strong>
       </div>
 
     </CSSTransitionGroup>

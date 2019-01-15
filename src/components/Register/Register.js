@@ -1,7 +1,6 @@
 
 import React from 'react';
 import './Register.css';
-import  SomeComponent from './SomeComponent';
 
 
 const Register = ({onRouteChange}) => {
@@ -14,10 +13,10 @@ const Register = ({onRouteChange}) => {
         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
           <legend className="f1 fw6 ph0 mh0">Registration</legend>
           <input
-          onClick={() => onRouteChange('quiz')}
+          onClick={() => onRouteChange('info')}
           className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
           type="submit"
-          value="Retake The Test"
+          value="Retake The Quiz"
           />
           <div className="mt3">
 
@@ -34,7 +33,7 @@ const Register = ({onRouteChange}) => {
           </div>
 
           <div className="mt3">
-          <label className="db fw6 lh-copy f6" htmlFor="">Choose Your Quiz Result </label>
+          <label className="db fw6 lh-copy f6" htmlFor="">Choose Your Type Result </label>
             <select className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 cognitive'>
               <option value="" disabled selected>Cognitive Ego</option>
               <option value="mbti">Structure & Guardian : ESTJ</option>
@@ -63,7 +62,6 @@ const Register = ({onRouteChange}) => {
           type="submit"
           value="Join Our Group!"
           />
-          <SomeComponent />
         </div>
       </div>
     </main>

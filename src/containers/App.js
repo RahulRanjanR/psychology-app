@@ -1,14 +1,21 @@
-
 /* 01/10/2019 Objectives
 ------------------------------------------------------
 (*) Change the routing for Register to after the QuizPage
-(*)  Combine QuizPage and Register into one Page
+(*) Combine QuizPage and Register into one Page
 ------------------------------------------------------
 ^ 01/11/2019 Objectives
 ------------------------------------------------------
 (*) Organize Folders
 (*) Turn the QuizPage into a functional quiz format
 (*) Integrate the questions to result in the correct types
+------------------------------------------------------
+^ 01/12/2019 --- ^ 01/14/2019 Objectives
+(*) Quiz related stuff and styling
+------------------------------------------------------
+^ 01/15/2019 Objectives
+------------------------------------------------------
+() Figure out how to input all the register data into the users profile
+() Add servers & database to app
 /*/
 
 import React, { Component } from 'react';
@@ -16,6 +23,8 @@ import React, { Component } from 'react';
 import '../components/Logo/Logo.css';
 import quizQuestions from '../api/quizQuestions';
 import Quiz from '../components/Quiz/Quiz';
+import InfoPage from '../components/Quiz/InfoPage/InfoPage';
+
 import QuizPage from './QuizPage';
 import Result from '../components/Quiz/Result';
 // *****************smart-brain features*****************
@@ -241,27 +250,31 @@ renderResult() {
                       : (
                         route === 'quiz'
                         ?
+                        <div>
                         <QuizPage onRouteChange={this.onRouteChange}  />
+                        </div>
                            : (
-                             route === 'register'
+                             route === 'info'
                              ?
-                             <Register onRouteChange={this.onRouteChange} />
+                             <InfoPage onRouteChange={this.onRouteChange}  />
                              :  (
-                               route === 'mystery'
+                               route === 'register'
                                ?
-                                 <div>
-                                 <Rank />
-                                 <ImageLinkForm
-                                  onInputChange={this.onInputChange}
-                                  onButtonSumbit={this.onButtonSubmit}
-                                  question= {quizQuestions[0].question}
+                               <Register onRouteChange={this.onRouteChange} />
 
-                                  />
-                                 <FaceRecognition box={box} imageUrl={imageUrl} />
-                                 </div>
+
                                  : (
-                                 <h1>You seem lost...</h1>
-                              )
+                                   
+                                   <div>
+                                   <Rank />
+                                   <ImageLinkForm
+                                    onInputChange={this.onInputChange}
+                                    onButtonSumbit={this.onButtonSubmit}
+                                    question= {quizQuestions[0].question}
+
+                                    />
+                                   <FaceRecognition box={box} imageUrl={imageUrl} />
+                                   </div>                              )
                             )
                     )
                   )

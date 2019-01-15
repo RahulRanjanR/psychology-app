@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 // ***************** Quiz Features*****************
-import Tilt from 'react-tilt'
-import psychology from '../components/Logo/psychology.png';
 import '../components/Logo/Logo.css';
 import quizQuestions from '../api/quizQuestions';
 import Quiz from '../components/Quiz/Quiz';
@@ -57,7 +55,11 @@ class QuizPage extends Component {
     Structure: 0,
     Starter: 0,
     Finisher: 0,
-    Background: 0
+    Background: 0,
+    Guardian: 0,
+    Artisan: 0,
+    Intellectual: 0,
+    Idealist: 0
   },
   result: ''
     }
@@ -137,24 +139,52 @@ getResults() {
   }
 
   setResults(result) {
-    console.log(result);
-    console.log(result[0]);
-    if (result.length === 1) {
-      if(result[0].includes('Structure')) {
-        this.setState({ result: result[0] + " : ESTJ , ESTP , ENTJ , ENFJ "});
-    } else if
-        (result[0].includes('Starter')) {
-          this.setState({ result: result[0] + " : ESFJ , ESFP , ENTP , ENFP "});
-        }
-        else if
-            (result[0].includes('Finisher')) {
-              this.setState({ result: result[0] + " : ISTJ , ISTP , INTJ , INFJ "});
-            }
-            else if
-                (result[0].includes('Background')) {
-                  this.setState({ result: result[0] + " : ISFJ , ISFP , INTP , INFP "});
-                }
-  }
+    console.log("result " + result);
+    console.log("result[0] " + result[0] + " : result[1] " + result[1]);
+    // Guardian
+
+    if(result[0].includes('Structure') && result[1].includes('Guardian')) {
+      this.setState({ result: result[0] + " & " + result[1] + " : ESTJ "});
+  }    if(result[0].includes('Structure') && result[1].includes('Artisan')) {
+        this.setState({ result: result[0] + " & " + result[1] + " : ESTP "});
+    }    if(result[0].includes('Structure') && result[1].includes('Intellectual')) {
+          this.setState({ result: result[0] + " & " + result[1] + " : ENTJ "});
+      }    if(result[0].includes('Structure') && result[1].includes('Idealist')) {
+            this.setState({ result: result[0] + " & " + result[1] + " : ENFJ "});
+            // Artisan
+
+        }    if(result[0].includes('Starter') && result[1].includes('Guardian')) {
+              this.setState({ result: result[0] + " & " + result[1] + " : ESFJ "});
+          }    if(result[0].includes('Starter') && result[1].includes('Artisan')) {
+                this.setState({ result: result[0] + " & " + result[1] + " : ESFP "});
+            }    if(result[0].includes('Starter') && result[1].includes('Intellectual')) {
+                  this.setState({ result: result[0] + " & " + result[1] + " : ENTP "});
+              }    if(result[0].includes('Starter') && result[1].includes('Idealist')) {
+                    this.setState({ result: result[0] + " & " + result[1] + " : ENFP "});
+                    // Intellectual
+
+                }    if(result[0].includes('Finisher') && result[1].includes('Guardian')) {
+                      this.setState({ result: result[0] + " & " + result[1] + " : ISTJ "});
+                  }    if(result[0].includes('Finisher') && result[1].includes('Artisan')) {
+                        this.setState({ result: result[0] + " & " + result[1] + " : ISTP "});
+                    }    if(result[0].includes('Finisher') && result[1].includes('Intellectual')) {
+                          this.setState({ result: result[0] + " & " + result[1] + " : INTJ "});
+                      }    if(result[0].includes('Finisher') && result[1].includes('Idealist')) {
+                            this.setState({ result: result[0] + " & " + result[1] + " : INFJ "});
+                            // Idealist
+
+                        }    if(result[0].includes('Background') && result[1].includes('Guardian')) {
+                              this.setState({ result: result[0] + " & " + result[1] + " : ISFJ "});
+                          }    if(result[0].includes('Background') && result[1].includes('Artisan')) {
+                                this.setState({ result: result[0] + " & " + result[1] + " : ISFP "});
+                            }    if(result[0].includes('Background') && result[1].includes('Intellectual')) {
+                                  this.setState({ result: result[0] + " & " + result[1] + " : INTP "});
+                              }     if(result[0].includes('Background') && result[1].includes('Idealist')) {
+                                    this.setState({ result: result[0] + " & " + result[1] + " : INFP "});
+                                }
+
+
+
 }
 
   renderQuiz() {
@@ -225,13 +255,8 @@ renderResult() {
 
           <div className="App">
           <div className="App-header ma4 mt0">
-          <Tilt className="Tilt br2 shadow-2 center" options={{ max : 55 }} style={{ height: 150, width: 150 }} >
-            <div className="Tilt-inner tc pa3 ">
-            <img style={{paddingTop: '5px'}}alt='psychology logo'src={psychology}
-            />
-             </div>
-          </Tilt>
-          <h2 className='f1'>React Quiz</h2>
+
+          <h2 className='f1'>Typing Yourself & Others </h2>
           </div>
 
            {this.state.result ? this.renderResult() : this.renderQuiz()}

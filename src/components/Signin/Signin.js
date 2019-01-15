@@ -28,10 +28,10 @@ const Signin = ({onRouteChange}) => {
         </div>
 
         <input
-        onClick={() => onRouteChange('quiz')}
+        onClick={() => onRouteChange('info')}
         className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
         type="submit"
-        value="Take The Quiz"/>
+        value="About This App"/>
       </div>
     </main>
     </article>

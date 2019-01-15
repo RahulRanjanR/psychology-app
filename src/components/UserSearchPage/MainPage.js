@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import LinkTag from '../Register/LinkTag';
 import CardList from './CardList';
 import SearchBox from './SearchBox';
 import Scroll from './Scroll';
@@ -28,7 +28,8 @@ filterRobots = () => {
       <div className='tc'>
         <Header/>
         <SearchBox searchChange={onSearchChange}/>
-        <Scroll>
+        <LinkTag />
+         <Scroll>
           { isPending ? <h1>Loading...</h1> :
             <ErrorBoundry>
               <CardList robots={this.filterRobots()} />
