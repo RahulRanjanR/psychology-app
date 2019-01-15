@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransitionGroup } from 'react-transition-group';
-import QuizPage2 from '../../containers/QuizPage2';
 
 
 function Result2(props) {
@@ -16,9 +15,7 @@ function Result2(props) {
       transitionAppearTimeout={500}
     >
       <div className='f2'>
-        Your Temperament Style is :  <strong>{props.quizResult}</strong>
-
-
+        Your Temperament Style is <strong>{props.quizResult}</strong>
       </div>
 
     </CSSTransitionGroup>

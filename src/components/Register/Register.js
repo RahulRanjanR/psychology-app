@@ -35,21 +35,22 @@ const Register = ({onRouteChange}) => {
           <label className="db fw6 lh-copy f6" htmlFor="">Choose Your Quiz Result </label>
             <select className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 cognitive'>
               <option value="" disabled selected>Cognitive Ego</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
-              <option value="hurr">Ti Ne Si Fe</option>
+              <option value="mbti">Structure & Guardian : ESTJ</option>
+              <option value="mbti">Structure & Artisan : ESTP</option>
+              <option value="mbti">Structure & Intellectual : ENTJ</option>
+              <option value="mbti">Structure & Idealist : ENFJ</option>
+              <option value="mbti">Starter & Guardian : ESFJ</option>
+              <option value="mbti">Starter & Artisan : ESFP</option>
+              <option value="mbti">Starter & Intellectual : ENTP</option>
+              <option value="mbti">Starter & Idealist : ENFP</option>
+              <option value="mbti">Finisher & Guardian : ISTJ</option>
+              <option value="mbti">Finisher & Artisan : ISTP</option>
+              <option value="mbti">Finisher & Intellectual : INTJ</option>
+              <option value="mbti">Finisher & Idealists : INFJ</option>
+              <option value="mbti">Background & Guardian : ISFJ</option>
+              <option value="mbti">Background & Artisan : ISFP</option>
+              <option value="mbti">Background & Intellectual : INTP</option>
+              <option value="mbti">Background & Idealist : INFP</option>
             </select>
             </div>
         </fieldset>

@@ -16,7 +16,7 @@ function Result(props) {
       transitionAppearTimeout={500}
     >
       <div className='f2'>
-        Your Interaction Style is   <strong>{props.quizResult}</strong>
+        Your Interaction Style is <strong>{props.quizResult}</strong>
         <QuizPage2  />
 
 

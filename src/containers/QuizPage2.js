@@ -1,23 +1,13 @@
 import React, { Component } from 'react';
 // ***************** Quiz Features*****************
 
-import quizQuestions from '../api/quizQuestions';
+import quizQuestions2 from '../api/quizQuestions2';
 import Quiz from '../components/Quiz/Quiz';
 import Result2 from '../components/Quiz/Result2';
 
 // *****************smart-brain features*****************
 import { connect } from 'react-redux';
 import { setSearchField, requestRobots } from '../actions';
-
-const ColoredLine = ({ color }) => (
-  <hr
-      style={{
-          color: color,
-          backgroundColor: color,
-          height: 5
-      }}
-  />
-);
 
 const mapStateToProps = (state) => {
   return {
@@ -47,10 +37,10 @@ class QuizPage2 extends Component {
   answerOptions: [],
   answer: '',
   answersCount: {
-    Direct_Initiating_Control: 0,
-    Informative_Initiating_Movement: 0,
-    Direct_Responding_Movement: 0,
-    Informative_Responding_Control: 0
+    Guardian: 0,
+    Artisan: 0,
+    Intellectual: 0,
+    Idealist: 0
   },
   result: ''
     }
@@ -59,11 +49,11 @@ class QuizPage2 extends Component {
   }
 
   componentWillMount() {
-    const shuffledAnswerOptions = quizQuestions.map(question =>
+    const shuffledAnswerOptions = quizQuestions2.map(question =>
       this.shuffleArray(question.answers)
     );
     this.setState({
-      question: quizQuestions[0].question,
+      question: quizQuestions2[0].question,
       answerOptions: shuffledAnswerOptions[0]
     });
   }
@@ -91,7 +81,7 @@ class QuizPage2 extends Component {
       handleAnswerSelected(event) {
   this.setUserAnswer(event.currentTarget.value);
 
-  if (this.state.questionId < quizQuestions.length) {
+  if (this.state.questionId < quizQuestions2.length) {
     setTimeout(() => this.setNextQuestion(), 300);
   } else {
     setTimeout(() => this.setResults(this.getResults()), 300);
@@ -115,8 +105,8 @@ setNextQuestion() {
   this.setState({
     counter: counter,
     questionId: questionId,
-    question: quizQuestions[counter].question,
-    answerOptions: quizQuestions[counter].answers,
+    question: quizQuestions2[counter].question,
+    answerOptions: quizQuestions2[counter].answers,
     answer: ''
   });
 }
@@ -133,10 +123,21 @@ getResults() {
     console.log(result);
     console.log(result[0]);
     if (result.length === 1) {
-      this.setState({ result: "anyone"  });
-      if(result[0].includes('Direct_Initiating_Control')) {
-        this.setState({ result: "ohhh yeeee"  });
-    }
+      if(result[0].includes('Guardian')) {
+        this.setState({ result: result[0] + " : ESTJ , ESFJ , ISTJ , ISFJ "});
+
+    } else if
+        (result[0].includes('Artisan')) {
+          this.setState({ result: result[0] + " : ESTP , ESFP , ISTP , ISFP "});
+        }
+        else if
+            (result[0].includes('Intellectual')) {
+              this.setState({ result: result[0] + " : ENTJ , ENTP , INTJ , INTP "});
+            }
+            else if
+                (result[0].includes('Idealist')) {
+                  this.setState({ result: result[0] + " : ENFJ , ENFP , INFJ , INFP "});
+                }
   }
 }
 
@@ -147,7 +148,7 @@ getResults() {
       answerOptions={this.state.answerOptions}
       questionId={this.state.questionId}
       question={this.state.question}
-      questionTotal={quizQuestions.length}
+      questionTotal={quizQuestions2.length}
       onAnswerSelected={this.handleAnswerSelected}
     />
   );

@@ -1,26 +1,31 @@
+
 var quizQuestions = [
   {
-      question: "Test 1" ,
+      question: "Interaction Styles" ,
       answers: [
           {
-              type: "Direct_Initiating_Control",
-              content: "DI"
+              type: "Structure",
+              content: "DIRECT INITIATING CONTROL : To the point langauge and directly asks for favors, "
+              + " Prefers to begin conversations and new topics/ prefers approaching people first "
           },
 
 
           {
-              type: "Informative_Initiating_Movement",
-              content: "II"
+              type: "Starter",
+              content: "INFORMATIVE INITIATING CONTROL : Likes to speak about extra details and indirectly asks for favors, "
+              + " Prefers to begin conversations and new topics/ prefers approaching people first "
           },
 
           {
-              type: "Direct_Responding_Movement",
-              content: "DR"
+              type: "Finisher",
+              content: "DIRECT RESPONDING MOVEMENT : To the point langauge and directly asks for favors, "
+              + " Prefers to listen to conversations and let people lead the flow / prefers being approached by people"
           },
 
           {
-              type: "Informative_Responding_Control",
-              content: "IR"
+              type: "Background",
+              content: "INFORMATIVE RESPONDING CONTROL : Likes to speak about extra details and indirectly asks for favors, "
+              + " Prefers to listen to conversations and let people lead the flow / prefers being approached by people"
           }
       ]
   }

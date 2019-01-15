@@ -54,10 +54,10 @@ class QuizPage extends Component {
   answerOptions: [],
   answer: '',
   answersCount: {
-    Direct_Initiating_Control: 0,
-    Informative_Initiating_Movement: 0,
-    Direct_Responding_Movement: 0,
-    Informative_Responding_Control: 0
+    Structure: 0,
+    Starter: 0,
+    Finisher: 0,
+    Background: 0
   },
   result: ''
     }
@@ -140,12 +140,20 @@ getResults() {
     console.log(result);
     console.log(result[0]);
     if (result.length === 1) {
-      if(result[0].includes('Direct_Initiating_Control')) {
-        this.setState({ result: "Direct Initiating Control : ESTJ , ESTP , ENTJ , ENFJ "});
+      if(result[0].includes('Structure')) {
+        this.setState({ result: result[0] + " : ESTJ , ESTP , ENTJ , ENFJ "});
     } else if
-        (result[0].includes('Informative_Initiating_Movement')) {
-          this.setState({ result: result[0] + ": ESFJ , ESFP , ENTP , ENFP "});
-  }
+        (result[0].includes('Starter')) {
+          this.setState({ result: result[0] + " : ESFJ , ESFP , ENTP , ENFP "});
+        }
+        else if
+            (result[0].includes('Finisher')) {
+              this.setState({ result: result[0] + " : ISTJ , ISTP , INTJ , INFJ "});
+            }
+            else if
+                (result[0].includes('Background')) {
+                  this.setState({ result: result[0] + " : ISFJ , ISFP , INTP , INFP "});
+                }
   }
 }
 
