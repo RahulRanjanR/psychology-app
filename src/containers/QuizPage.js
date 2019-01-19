@@ -4,9 +4,6 @@ import '../components/Logo/Logo.css';
 import quizQuestions from '../api/quizQuestions';
 import Quiz from '../components/Quiz/Quiz';
 import Result from '../components/Quiz/Result';
-// *****************smart-brain features*****************
-import Clarifai from 'clarifai';
-// *****************smart-brain features*****************
 import { connect } from 'react-redux';
 import { setSearchField, requestRobots } from '../actions';
 
