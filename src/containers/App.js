@@ -147,7 +147,7 @@ loadUser = (data) => {
                   : (
                     route === 'signin'
                     ?
-                    <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+                    <Signin isSignedIn={this.isSignedIn} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
                     :  (
                       route === 'signout'
                       ?
