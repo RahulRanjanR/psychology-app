@@ -39,7 +39,7 @@ class Register extends React.Component {
     })
     .then(response => response.json())
     .then(user => {
-      if (user){
+      if (user.id){
         this.props.loadUser(user)
         this.props.onRouteChange('home')
       }
@@ -53,12 +53,7 @@ class Register extends React.Component {
         <div className="measure">
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
             <legend className="f1 fw6 ph0 mh0">Registration</legend>
-            <input
-            onClick={() => this.onRouteChange('info')}
-            className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-            type="submit"
-            value="Retake The Quiz"
-            />
+
             <div className="mt3">
 
               <label className="db fw6 lh-copy f6" htmlFor="name">Name/Discord</label>
@@ -93,11 +88,11 @@ class Register extends React.Component {
                   </div>
             <div className="mt3">
             <label className="db fw6 lh-copy f6" htmlFor="">Choose Your Type Result </label>
-              <select
+              <select required
               className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 cognitive'
               onChange={this.onMbtiChange}
               >
-                <option value="BLANK" defaultValue>Cognitive Ego</option>
+                <option value="" selected disabled hidden>Please select your cognitive ego</option>
                 <option value="ESTJ">Structure & Guardian : ESTJ</option>
                 <option value="ESTP">Structure & Artisan : ESTP</option>
                 <option value="ENTJ">Structure & Intellectual : ENTJ</option>

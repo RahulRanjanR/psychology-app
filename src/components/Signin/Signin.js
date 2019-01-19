@@ -29,15 +29,10 @@ class Signin extends React.Component {
     .then(response => response.json())
     .then(user => {
       if (user.id){
-        if(this.isSignedIn === true){
-          this.props.onRouteChange('home');
-
-        } else{
-          this.props.onRouteChange('home');
           this.props.loadUser(user)
+          this.props.onRouteChange('home');
         }
-      }
-    })
+      })
     }
 // onClick is used to perform the function when an event ( typing in box) has occurred
   render() {

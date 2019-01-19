@@ -1,5 +1,5 @@
 import React from 'react';
-import  LinkTag from '../../Register/LinkTag';
+import  Logo from '../../Logo/Logo';
 
 
 
@@ -7,7 +7,7 @@ import  LinkTag from '../../Register/LinkTag';
 const InfoPage = ({onRouteChange}) => {
   return  (
     <div>
-<LinkTag />
+<Logo />
 
       <h1>
 <div className=' w-30 bg-light-purple center'>

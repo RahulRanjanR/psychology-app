@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 // ***************** Quiz Features*****************
-import '../components/Logo/Logo.css';
 import quizQuestions from '../api/quizQuestions';
 import InfoPage from '../components/Quiz/InfoPage/InfoPage';
 import QuizPage from './QuizPage';
 // *****************smart-brain features*****************
-import Clarifai from 'clarifai';
 import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 import Navigation from '../components/Navigation/Navigation';
 import Signin from '../components/Signin/Signin';
@@ -16,10 +14,6 @@ import { connect } from 'react-redux';
 import { setSearchField, requestRobots } from '../actions';
 import MainPage from '../components/UserSearchPage/MainPage';
 import './App.css';
-
-const app = new Clarifai.App({
- apiKey: '9a8ca46ac9bf443a9d35f6de69d313f0'
-});
 
 
 const mapStateToProps = (state) => {
@@ -34,6 +28,23 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
     onRequestRobots: () => dispatch(requestRobots())
+  }
+}
+
+const initialState = {
+  input: '',
+  imageUrl: '',
+  box: {},
+  route: 'signin',
+  isSignedIn: false,
+  counter: 0,
+  user: {
+    id: '',
+    name: '',
+    email: '',
+    mbti: '',
+    entries: 0,
+    joined: ''
   }
 }
 
@@ -93,14 +104,18 @@ loadUser = (data) => {
   onInputChange = (event) => {
       this.setState({input: event.target.value});
   }
-
 // update the entry number of the user each time an image is submitted
   onPictureSubmit = () => {
     this.setState({imageUrl: this.state.input})
-    app.models.predict(
-      Clarifai.FACE_DETECT_MODEL,
-      this.state.input)
-      .then(response => {
+      fetch('http://localhost:3000/imageurl', {
+        method: 'post',
+        headers: {'Content-type': 'application/json'},
+        body: JSON.stringify({
+          input: this.state.input
+      })
+    })
+    .then(response => response.json())
+    .then(response => {
         if(response) {
           fetch('http://localhost:3000/image', {
             method: 'put',
@@ -112,11 +127,8 @@ loadUser = (data) => {
         .then(response => response.json())
         .then(count => {
           this.setState(Object.assign(this.state.user, { entries: count}))
-          if(count===100){
-            console.log('congrats on 100 entries!!!');
-          }
           })
-
+          .catch(console.log);
       }
       this.displayFaceBox(this.calculateFaceLocation(response))
          })
@@ -126,7 +138,7 @@ loadUser = (data) => {
 
   onRouteChange = (route) => {
     if(route === 'signout') {
-      this.setState({isSignedIn: false})
+      this.setState(initialState)
     } else if (route === 'home') {
       this.setState({isSignedIn: true})
     }
@@ -147,11 +159,11 @@ loadUser = (data) => {
                   : (
                     route === 'signin'
                     ?
-                    <Signin isSignedIn={this.isSignedIn} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+                    <Signin loadUser={this.loadUser} isSignedIn={this.isSignedIn}  onRouteChange={this.onRouteChange} />
                     :  (
                       route === 'signout'
                       ?
-                      <Signin onRouteChange={this.onRouteChange} />
+                      <Signin loadUser={this.loadUser} isSignedIn={this.isSignedIn} onRouteChange={this.onRouteChange} />
                       : (
                         route === 'quiz'
                         ?
@@ -171,11 +183,12 @@ loadUser = (data) => {
                                    <Rank name={this.state.user.name} entries={this.state.user.entries} />
                                    <ImageLinkForm
                                     onInputChange={this.onInputChange}
-                                    onButtonSumbit={this.onPictureSubmit}
+                                    onPictureSubmit={this.onPictureSubmit}
                                     question= {quizQuestions[0].question}
                                     />
                                    <FaceRecognition box={box} imageUrl={imageUrl} />
-                                   </div>                              )
+                                   </div>
+                                  )
                             )
                     )
                   )
