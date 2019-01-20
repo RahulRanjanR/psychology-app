@@ -11,7 +11,7 @@ import Register from '../components/Register/Register';
 import ImageLinkForm from '../components/ImageLinkForm/ImageLinkForm';
 import Rank from '../components/Rank/Rank';
 import { connect } from 'react-redux';
-import { setSearchField, requestRobots } from '../actions';
+import { setSearchField, requestRobots } from '../UserSearchPageExtras/actions';
 import MainPage from '../components/UserSearchPage/MainPage';
 import './App.css';
 

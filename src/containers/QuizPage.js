@@ -5,7 +5,7 @@ import quizQuestions from '../api/quizQuestions';
 import Quiz from '../components/Quiz/Quiz';
 import Result from '../components/Quiz/Result';
 import { connect } from 'react-redux';
-import { setSearchField, requestRobots } from '../actions';
+import { setSearchField, requestRobots } from '../UserSearchPageExtras/actions';
 
 
 
