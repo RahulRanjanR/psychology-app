@@ -5,6 +5,7 @@
   "homepage": "https://maoziyou.github.io/discord-app",
   "dependencies": {
     "react": "^16.7.0",
+    "react-redux":"^6.0.0",
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.2",
     "react-tilt": "^0.1.4"
@@ -31,5 +32,5 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "redux-mock-store": "^1.5.3"
   }
-  
+
 }
