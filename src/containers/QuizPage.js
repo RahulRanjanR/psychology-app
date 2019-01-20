@@ -7,9 +7,7 @@ import Result from '../components/Quiz/Result';
 import { connect } from 'react-redux';
 import { setSearchField, requestRobots } from '../actions';
 
-const app = new Clarifai.App({
- apiKey: '9a8ca46ac9bf443a9d35f6de69d313f0'
-});
+
 
 const ColoredLine = ({ color }) => (
   <hr
@@ -226,11 +224,8 @@ renderResult() {
       this.setState({input: event.target.value});
   }
 
-  onButtonSubmit = () => {
+  onPictureSubmit = () => {
     this.setState({imageUrl: this.state.input})
-    app.models.predict(
-      Clarifai.FACE_DETECT_MODEL,
-      this.state.input)
       .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))
       .catch(err => console.log(err));
   }

@@ -27,7 +27,7 @@ class Register extends React.Component {
     this.setState({mbti: event.target.value })
   }
   onSubmitSignin = () => {
-    fetch('http://localhost:3000/register', {
+    fetch('https://murmuring-tor-58384.herokuapp.com/register', {
       method: 'post',
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify({
@@ -92,7 +92,7 @@ class Register extends React.Component {
               className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 cognitive'
               onChange={this.onMbtiChange}
               >
-                <option value="" selected disabled hidden>Please select your cognitive ego</option>
+                <option value="" defaultValue disabled hidden>Please select your cognitive ego</option>
                 <option value="ESTJ">Structure & Guardian : ESTJ</option>
                 <option value="ESTP">Structure & Artisan : ESTP</option>
                 <option value="ENTJ">Structure & Intellectual : ENTJ</option>
