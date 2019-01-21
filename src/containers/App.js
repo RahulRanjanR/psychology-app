@@ -56,7 +56,7 @@ class App extends Component {
     this.state = {
       input: '',
       imageUrl: '',
-      box: {},
+      boxes: [],
       route: 'signin',
       isSignedIn: false,
       counter: 0,
@@ -82,22 +82,24 @@ loadUser = (data) => {
     joined: data.joined
   }})
 }
-  calculateFaceLocation = (data) => {
-    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
-    const image = document.getElementById('inputImage');
-    const width = Number(image.width);
-    const height = Number(image.height);
-    return {
-      leftCol: clarifaiFace.left_col * width,
-      topRow: clarifaiFace.top_row * height,
-      rightCol: width - (clarifaiFace.right_col * width ),
-      bottomRow: height - (clarifaiFace.bottom_row * height)
-    }
+  calculateFaceLocations = (data) => {
+    return data.outputs[0].data.regions.map(face => {
+      const clarifaiFace = face.region_info.bounding_box;
+      const image = document.getElementById('inputImage');
+      const width = Number(image.width);
+      const height = Number(image.height);
+      return {
+        leftCol: clarifaiFace.left_col * width,
+        topRow: clarifaiFace.top_row * height,
+        rightCol: width - (clarifaiFace.right_col * width ),
+        bottomRow: height - (clarifaiFace.bottom_row * height)
+      }
+    });
   }
 
 
-  displayFaceBox = (box) => {
-    this.setState({box: box})
+  displayFaceBoxes = (boxes) => {
+    this.setState({boxes: boxes})
   }
 
 
@@ -130,7 +132,7 @@ loadUser = (data) => {
           })
           .catch(console.log);
       }
-      this.displayFaceBox(this.calculateFaceLocation(response))
+      this.displayFaceBoxes(this.calculateFaceLocations(response))
          })
       .catch(err => console.log(err));
   }
@@ -147,7 +149,7 @@ loadUser = (data) => {
 
 
   render() {
-    const  { isSignedIn, imageUrl, route, box } = this.state;
+    const  { isSignedIn, imageUrl, route, boxes } = this.state;
       return (
         <div className="App">
           <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
@@ -186,7 +188,7 @@ loadUser = (data) => {
                                     onPictureSubmit={this.onPictureSubmit}
                                     question= {quizQuestions[0].question}
                                     />
-                                   <FaceRecognition box={box} imageUrl={imageUrl} />
+                                   <FaceRecognition boxes={boxes} imageUrl={imageUrl} />
                                    </div>
                                   )
                             )
