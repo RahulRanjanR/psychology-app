@@ -10,7 +10,7 @@ export const setSearchField = (text) => ({ type: CHANGE_SEARCHFIELD, payload: te
 
 export const requestRobots = () => (dispatch) => {
   dispatch({ type: REQUEST_ROBOTS_PENDING })
-  apiCall('https://jsonplaceholder.typicode.com/users')
+  apiCall('https://murmuring-tor-58384.herokuapp.com/profile/1')
     .then(data => dispatch({ type: REQUEST_ROBOTS_SUCCESS, payload: data }))
     .catch(error => dispatch({ type: REQUEST_ROBOTS_FAILED, payload: error }))
 }
