@@ -60,14 +60,16 @@ class App extends Component {
       route: 'signin',
       isSignedIn: false,
       counter: 0,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        mbti: '',
-        entries: 0,
-        joined: ''
-      }
+      user: [
+        {
+          id: '',
+          name: '',
+          email: '',
+          mbti: '',
+          entries: 0,
+          joined: ''
+        }
+      ]
     }
   }
 
