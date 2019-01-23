@@ -1,7 +1,7 @@
 .bounding-box {
   position: absolute;
-  box-shadow: inset 0 0 0 3px #000000=FF;
-  width: 32%;
+  box-shadow: inset 0 0 0 4.5px #ffb200;
+  border-radius: 15%;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
