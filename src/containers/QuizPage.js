@@ -134,8 +134,6 @@ getResults() {
   }
 
   setResults(result) {
-    console.log("result " + result);
-    console.log("result[0] " + result[0] + " : result[1] " + result[1]);
     // Guardian
 
     if(result[0].includes('Structure') && result[1].includes('Guardian')) {

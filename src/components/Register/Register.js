@@ -27,7 +27,7 @@ class Register extends React.Component {
     this.setState({mbti: event.target.value })
   }
   onSubmitSignin = () => {
-    fetch('https://murmuring-tor-58384.herokuapp.com/register', {
+    fetch('http://localhost:3000/register',{
       method: 'post',
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify({
