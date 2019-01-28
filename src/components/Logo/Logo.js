@@ -12,11 +12,11 @@ handleClick(event) {
   const mouseClick = event.nativeEvent.which;
   if (mouseClick === 1) {
     // Left mouse click - open in modal ...
-    window.open('https://csjoseph.life/category/depth-psychology/typeyourself/');
+    window.open('https://csjoseph.life/');
 
   } else if (mouseClick === 3) {
     // Right mouse click - open in new tab ...
-    window.open('https://csjoseph.life/category/depth-psychology/typeyourself/');
+    window.open('https://csjoseph.life/');
   }
 }
 

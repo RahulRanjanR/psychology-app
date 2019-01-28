@@ -8,7 +8,7 @@ class Header extends Component {
     console.log('header')
     return (
       <div>
-        <h1 className='f1'>The Psychology Community </h1>
+        <h1 className='f1'>Know Thyself & Others </h1>
       </div>
     );
   }

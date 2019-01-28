@@ -25,7 +25,7 @@ filterRobots = () => {
   /* robots*/  const {  onSearchChange, isPending } = this.props;
 
     return (
-      <div className='tc'>
+      <div className='tc '>
       <Logo />
         <Header/>
         <SearchBox searchChange={onSearchChange}/>
