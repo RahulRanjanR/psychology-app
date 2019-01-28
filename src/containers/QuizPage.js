@@ -9,7 +9,7 @@ import { setSearchField, requestRobots } from '../UserSearchPageExtras/actions';
 
 
 
-const ColoredLine = ({ color }) => (
+export const ColoredLine = ({ color }) => (
   <hr
       style={{
           color: color,

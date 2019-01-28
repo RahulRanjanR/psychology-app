@@ -1,6 +1,7 @@
 
 import React from 'react';
 import './Register.css';
+import { ColoredLine } from '../../containers/QuizPage';
 
 
 class Register extends React.Component {
@@ -47,18 +48,27 @@ class Register extends React.Component {
     }
 
   render() {
+    const { onRouteChange } = this.props;
+
     return  (
       <article className="br3 shadow-5 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 center">
           <main className="pa4 black-80">
         <div className="measure">
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-            <legend className="f1 fw6 ph0 mh0">Registration</legend>
+            <legend className="f1 fw6 ph0 mh0 ">Registration</legend>
+            <div>
+            <ColoredLine color="black" />
 
+            <input
+            onClick={() => onRouteChange('info')}
+            className="b ph3 pv2 input-reset ba b--black calming-text-field grow pointer f6 dib"
+            type="submit"
+            value="About This App"/>
+          </div>
             <div className="mt3">
-
               <label className="db fw6 lh-copy f6" htmlFor="name">Name/Discord</label>
               <input
-                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                className="pa2 input-reset ba calming-text-field hover-bg-black hover-white w-100"
                 type="text"
                 name="name"
                 id="name"
@@ -68,7 +78,7 @@ class Register extends React.Component {
             <div className="mt3">
               <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
               <input
-                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                className="pa2 input-reset ba calming-text-field hover-bg-black hover-white w-100"
                 type="email"
                 name="email-address"
                 id="email-address"
@@ -78,7 +88,7 @@ class Register extends React.Component {
             <div className="mv3">
               <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
               <input
-                className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                className="b pa2 input-reset ba calming-text-field hover-bg-black hover-white w-100"
                 type="password"
                 name="password"
                 id="password"
@@ -89,26 +99,43 @@ class Register extends React.Component {
             <div className="mt3">
             <label className="db fw6 lh-copy f6" htmlFor="">Choose Your Type Result </label>
               <select required
-              className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 cognitive'
+              className='b pa2 input-reset ba calming-text-field hover-bg-calming-text-field hover-black-text-field w-100 cognitive'
               onChange={this.onMbtiChange}
               >
                 <option value="" defaultValue disabled hidden>Please select your cognitive ego</option>
                 <option value="ESTJ">Structure & Guardian : ESTJ</option>
+                <ColoredLine/>
                 <option value="ESTP">Structure & Artisan : ESTP</option>
+                <ColoredLine/>
                 <option value="ENTJ">Structure & Intellectual : ENTJ</option>
+                <ColoredLine/>
                 <option value="ENFJ">Structure & Idealist : ENFJ</option>
+                <ColoredLine/>
                 <option value="ESFJ">Starter & Guardian : ESFJ</option>
+                <ColoredLine/>
                 <option value="ESFP">Starter & Artisan : ESFP</option>
+                <ColoredLine/>
                 <option value="ENTP">Starter & Intellectual : ENTP</option>
+                <ColoredLine/>
                 <option value="ENFP">Starter & Idealist : ENFP</option>
+                <ColoredLine/>
                 <option value="ISTJ">Finisher & Guardian : ISTJ</option>
+                <ColoredLine/>
                 <option value="ISTP">Finisher & Artisan : ISTP</option>
+                <ColoredLine/>
                 <option value="INTJ">Finisher & Intellectual : INTJ</option>
+                <ColoredLine/>
                 <option value="INFJ">Finisher & Idealist : INFJ</option>
+                <ColoredLine/>
                 <option value="ISFJ">Background & Guardian : ISFJ</option>
+                <ColoredLine/>
                 <option value="ISFP">Background & Artisan : ISFP</option>
+                <ColoredLine/>
                 <option value="INTP">Background & Intellectual : INTP</option>
+                <ColoredLine/>
                 <option value="INFP">Background & Idealist : INFP</option>
+                <ColoredLine/>
+
               </select>
               <p></p>
               </div>
@@ -116,10 +143,12 @@ class Register extends React.Component {
           <div className="">
             <input
             onClick={this.onSubmitSignin}
-            className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+            className="b ph3 pv2 input-reset ba b--black calming-text-field grow pointer f6 dib"
             type="submit"
             value="Join Our Group!"
             />
+            <ColoredLine color="black" />
+
           </div>
         </div>
       </main>

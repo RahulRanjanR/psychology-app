@@ -10,7 +10,7 @@ const InfoPage = ({onRouteChange}) => {
 <Logo />
 
       <h1>
-<div className=' w-30 bg-light-purple center'>
+<div className=' w-30 calming-text-field center'>
 How to use?
 </div>
     <div>
@@ -27,7 +27,7 @@ How to use?
   <div className="">
   <input
   onClick={() => onRouteChange('quiz')}
-  className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+  className="b ph3 pv2 input-reset ba b--black calming-text-field grow pointer f6 dib"
   type="submit"
   value="Take The Quiz"/>
 

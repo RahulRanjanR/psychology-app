@@ -15,6 +15,10 @@ import { setSearchField, requestRobots } from '../UserSearchPageExtras/actions';
 import MainPage from '../components/UserSearchPage/MainPage';
 import './App.css';
 
+// auth
+import Profile from '../components/Profile/Profile';
+import Modal from '../components/Modal/Modal';
+
 
 const mapStateToProps = (state) => {
   return {
@@ -44,32 +48,53 @@ const initialState = {
     email: '',
     mbti: '',
     entries: 0,
-    joined: ''
+    joined: '',
+    age: 0,
+    pet: ''
   }
 }
 
 
-// making state for dynamic inputs
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      input: '',
-      imageUrl: '',
-      boxes: [],
-      route: 'signin',
-      isSignedIn: false,
-      counter: 0,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        mbti: '',
-        entries: 0,
-        joined: ''
-      }
+    this.state = initialState;
+  }
+
+  componentDidMount() {
+    const token = window.sessionStorage.getItem('token');
+    if (token) {
+      fetch('http://localhost:3000/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data && data.id) {
+            fetch(`http://localhost:3000/profile/${data.id}`, {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+              }
+            })
+            .then(response => response.json())
+            .then(user => {
+              if (user && user.email) {
+                this.loadUser(user)
+                this.onRouteChange('home');
+              }
+            })
+          }
+        })
+        .catch(console.log)
     }
   }
+
+
 loadUser = (data) => {
   this.setState({user: {
     id: data.id,
@@ -105,65 +130,82 @@ loadUser = (data) => {
       this.setState({input: event.target.value});
   }
 // update the entry number of the user each time an image is submitted
-  onPictureSubmit = () => {
-    this.setState({imageUrl: this.state.input})
-      fetch('https://murmuring-tor-58384.herokuapp.com/imageurl', {
+onPictureSubmit = () => {
+    this.setState({imageUrl: this.state.input});
+      fetch('http://localhost:3000/imageurl', {
         method: 'post',
-        headers: {'Content-type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': window.sessionStorage.getItem('token')
+        },
         body: JSON.stringify({
           input: this.state.input
+        })
       })
-    })
-    .then(response => response.json())
-    .then(response => {
-        if(response) {
-          fetch('https://murmuring-tor-58384.herokuapp.com/image', {
+      .then(response => response.json())
+      .then(response => {
+        if (response) {
+          fetch('http://localhost:3000/image', {
             method: 'put',
-            headers: {'Content-type': 'application/json'},
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': window.sessionStorage.getItem('token')
+            },
             body: JSON.stringify({
               id: this.state.user.id
+            })
           })
-        })
-        .then(response => response.json())
-        .then(count => {
-          this.setState(Object.assign(this.state.user, { entries: count}))
-          })
-          .catch(console.log);
-      }
-      this.displayFaceBoxes(this.calculateFaceLocations(response))
-         })
+            .then(response => response.json())
+            .then(count => {
+              this.setState(Object.assign(this.state.user, { entries: count}))
+            })
+            .catch(console.log)
+
+        }
+        this.displayFaceBox(this.calculateFaceLocation(response))
+      })
       .catch(err => console.log(err));
   }
 
-
   onRouteChange = (route) => {
-    if(route === 'signout') {
-      this.setState(initialState)
+    if (route === 'signout') {
+      return this.setState(initialState)
     } else if (route === 'home') {
       this.setState({isSignedIn: true})
     }
     this.setState({route: route});
   }
 
+  toggleModal = () => {
+    this.setState(state => ({
+      ...state,
+      isProfileOpen: !state.isProfileOpen,
+    }));
+  }
 
   render() {
-    const  { isSignedIn, imageUrl, route, boxes } = this.state;
+    const  { isSignedIn, imageUrl, route, boxes, isProfileOpen, user  } = this.state;
       return (
         <div className="App">
-          <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
-          {route === 'home'
+        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} toggleModal={this.toggleModal}/>
+                {
+                  isProfileOpen &&
+                  <Modal>
+                    <Profile isProfileOpen={isProfileOpen} toggleModal={this.toggleModal} user={user} loadUser={this.loadUser} />
+                  </Modal>
+                }
+                {route === 'home'
             ? <div>
-
-           <MainPage { ...this.props } />
-           </div>
+                <MainPage { ...this.props } />
+              </div>
                   : (
                     route === 'signin'
                     ?
-                    <Signin loadUser={this.loadUser} isSignedIn={this.isSignedIn}  onRouteChange={this.onRouteChange} />
+                    <Signin loadUser={this.loadUser}  onRouteChange={this.onRouteChange} />
                     :  (
                       route === 'signout'
                       ?
-                      <Signin loadUser={this.loadUser} isSignedIn={this.isSignedIn} onRouteChange={this.onRouteChange} />
+                      <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
                       : (
                         route === 'quiz'
                         ?

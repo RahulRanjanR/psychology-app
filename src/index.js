@@ -4,13 +4,15 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 import 'tachyons';
 
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 import { requestRobots, searchRobots } from './UserSearchPageExtras/reducers'
 
-import './index.css';
 
 const logger = createLogger()
 
