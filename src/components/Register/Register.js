@@ -103,38 +103,38 @@ class Register extends React.Component {
               onChange={this.onMbtiChange}
               >
                 <option value="" defaultValue disabled hidden>Please select your cognitive ego</option>
-                <option value="ESTJ">Structure & Guardian : ESTJ</option>
-                <ColoredLine/>
-                <option value="ESTP">Structure & Artisan : ESTP</option>
-                <ColoredLine/>
-                <option value="ENTJ">Structure & Intellectual : ENTJ</option>
-                <ColoredLine/>
-                <option value="ENFJ">Structure & Idealist : ENFJ</option>
-                <ColoredLine/>
-                <option value="ESFJ">Starter & Guardian : ESFJ</option>
-                <ColoredLine/>
-                <option value="ESFP">Starter & Artisan : ESFP</option>
-                <ColoredLine/>
-                <option value="ENTP">Starter & Intellectual : ENTP</option>
-                <ColoredLine/>
-                <option value="ENFP">Starter & Idealist : ENFP</option>
-                <ColoredLine/>
-                <option value="ISTJ">Finisher & Guardian : ISTJ</option>
-                <ColoredLine/>
-                <option value="ISTP">Finisher & Artisan : ISTP</option>
-                <ColoredLine/>
-                <option value="INTJ">Finisher & Intellectual : INTJ</option>
-                <ColoredLine/>
-                <option value="INFJ">Finisher & Idealist : INFJ</option>
-                <ColoredLine/>
-                <option value="ISFJ">Background & Guardian : ISFJ</option>
-                <ColoredLine/>
-                <option value="ISFP">Background & Artisan : ISFP</option>
-                <ColoredLine/>
-                <option value="INTP">Background & Intellectual : INTP</option>
-                <ColoredLine/>
-                <option value="INFP">Background & Idealist : INFP</option>
-                <ColoredLine/>
+                <option onChange={this.onMbtiChange} value="ESTJ">Structure & Guardian : ESTJ</option>
+
+                <option onChange={this.onMbtiChange} value="ESTP">Structure & Artisan : ESTP</option>
+
+                <option onChange={this.onMbtiChange} value="ENTJ">Structure & Intellectual : ENTJ</option>
+
+                <option onChange={this.onMbtiChange} value="ENFJ">Structure & Idealist : ENFJ</option>
+
+                <option onChange={this.onMbtiChange} value="ESFJ">Starter & Guardian : ESFJ</option>
+
+                <option onChange={this.onMbtiChange} value="ESFP">Starter & Artisan : ESFP</option>
+
+                <option onChange={this.onMbtiChange} value="ENTP">Starter & Intellectual : ENTP</option>
+
+                <option onChange={this.onMbtiChange} value="ENFP">Starter & Idealist : ENFP</option>
+
+                <option onChange={this.onMbtiChange} value="ISTJ">Finisher & Guardian : ISTJ</option>
+
+                <option onChange={this.onMbtiChange} value="ISTP">Finisher & Artisan : ISTP</option>
+
+                <option onChange={this.onMbtiChange} value="INTJ">Finisher & Intellectual : INTJ</option>
+
+                <option onChange={this.onMbtiChange} value="INFJ">Finisher & Idealist : INFJ</option>
+
+                <option onChange={this.onMbtiChange} value="ISFJ">Background & Guardian : ISFJ</option>
+
+                <option onChange={this.onMbtiChange} value="ISFP">Background & Artisan : ISFP</option>
+
+                <option onChange={this.onMbtiChange} value="INTP">Background & Intellectual : INTP</option>
+
+                <option onChange={this.onMbtiChange} value="INFP">Background & Idealist : INFP</option>
+
 
               </select>
               <p></p>
