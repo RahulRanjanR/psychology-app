@@ -15,6 +15,7 @@ class Register extends React.Component {
     }
   }
 
+// checking before setting up a new user and allowing the popup to show
 onSubmitSignin = () => {
     fetch('http://localhost:3000/register',{
       method: 'post',
@@ -37,7 +38,6 @@ onSubmitSignin = () => {
     })
 
     }
-
 
   togglePopup() {
     this.setState({
@@ -146,7 +146,6 @@ onSubmitSignin = () => {
                 <option onChange={this.onMbtiChange} value="INTP">Background & Intellectual : INTP</option>
 
                 <option onChange={this.onMbtiChange} value="INFP">Background & Idealist : INFP</option>
-
 
               </select>
               <p></p>
