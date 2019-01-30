@@ -33,6 +33,7 @@ onSubmitSignin = () => {
         console.log('ayyee');
         console.log(this.state.showPopup);
          return this.setState({showPopup: true})
+         setTimeout(this.props.onRouteChange, 3000, 'signin')
 
       }
     })
@@ -155,8 +156,8 @@ onSubmitSignin = () => {
           <button onClick={this.onSubmitSignin} >Join the Community</button>
           {this.state.showPopup ?
             <div className='popup'>
-             <div className="popup_inner">
-              <button onClick={this.onSubmitSignin}>close me</button>
+             <div className="popup_inner br3 shadow-5 ba b--black-10 mv4 center">
+              <button className=' br3 w-100 w-50-m w-25-l mw6 center calming-text-field' onClick={this.onSubmitSignin}>You're Registered!</button>
              </div>
             </div>
             : null
@@ -169,6 +170,9 @@ onSubmitSignin = () => {
     );
   }
 }
+
+
+
 
 // Enter some pieces into the popup !
 /*  <div className="">
