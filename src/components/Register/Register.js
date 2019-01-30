@@ -32,8 +32,8 @@ onSubmitSignin = () => {
       if (user.id){
         console.log('ayyee');
         console.log(this.state.showPopup);
-         return this.setState({showPopup: true})
-         setTimeout(this.props.onRouteChange, 3000, 'signin')
+        setTimeout(this.props.onRouteChange, 5000, 'signin')
+        this.setState({showPopup: true})
 
       }
     })
@@ -157,7 +157,7 @@ onSubmitSignin = () => {
           {this.state.showPopup ?
             <div className='popup'>
              <div className="popup_inner br3 shadow-5 ba b--black-10 mv4 center">
-              <button className=' br3 w-100 w-50-m w-25-l mw6 center calming-text-field' onClick={this.onSubmitSignin}>You're Registered!</button>
+              <button className=' br3 w-100 w-50-m w-25-l mw6 center calming-text-field'>You're Registered! Heading back now..</button>
              </div>
             </div>
             : null
