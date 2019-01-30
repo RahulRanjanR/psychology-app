@@ -3,7 +3,6 @@ import React from 'react';
 import './Register.css';
 import { ColoredLine } from '../../containers/QuizPage';
 
-
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -11,8 +10,39 @@ class Register extends React.Component {
       email: '',
       password : '',
       name: '',
-      mbti: ''
+      mbti: '',
+      showPopup: false
     }
+  }
+
+onSubmitSignin = () => {
+    fetch('http://localhost:3000/register',{
+      method: 'post',
+      headers: {'Content-type': 'application/json'},
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+        name: this.state.name,
+        mbti: this.state.mbti
+      })
+    })
+    .then(response => response.json())
+    .then(user => {
+      if (user.id){
+        console.log('ayyee');
+        console.log(this.state.showPopup);
+         return this.setState({showPopup: true})
+
+      }
+    })
+
+    }
+
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
   // when change occurs in the field, the state is equal to that input form the user
   onNameChange = (event) => {
@@ -27,25 +57,7 @@ class Register extends React.Component {
   onMbtiChange = (event) => {
     this.setState({mbti: event.target.value })
   }
-  onSubmitSignin = () => {
-    fetch('http://localhost:3000/register',{
-      method: 'post',
-      headers: {'Content-type': 'application/json'},
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-        name: this.state.name,
-        mbti: this.state.mbti
-      })
-    })
-    .then(response => response.json())
-    .then(user => {
-      if (user.id){
-        this.props.loadUser(user)
-        this.props.onRouteChange('home')
-      }
-    })
-    }
+
 
   render() {
     const { onRouteChange } = this.props;
@@ -141,13 +153,15 @@ class Register extends React.Component {
               </div>
           </fieldset>
           <div className="">
-            <input
-            onClick={this.onSubmitSignin}
-            className="b ph3 pv2 input-reset ba b--black calming-text-field grow pointer f6 dib"
-            type="submit"
-            value="Join Our Group!"
-            />
-            <ColoredLine color="black" />
+          <button onClick={this.onSubmitSignin} >Join the Community</button>
+          {this.state.showPopup ?
+            <div className='popup'>
+             <div className="popup_inner">
+              <button onClick={this.onSubmitSignin}>close me</button>
+             </div>
+            </div>
+            : null
+          }
 
           </div>
         </div>
@@ -157,6 +171,16 @@ class Register extends React.Component {
   }
 }
 
+// Enter some pieces into the popup !
+/*  <div className="">
+    <input
+    onClick={this.onSubmitSignin}
+    className="b ph3 pv2 input-reset ba b--black calming-text-field grow pointer f6 dib"
+    type="submit"
+    value="Join Our Group!"
+    />
+  </div>
+*/
 
 
 
