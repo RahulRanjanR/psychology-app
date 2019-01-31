@@ -10,6 +10,8 @@ class Register extends React.Component {
       email: '',
       password : '',
       name: '',
+      age: 0,
+      pet: '',
       mbti: '',
       showPopup: false
     }
@@ -24,6 +26,8 @@ onSubmitSignin = () => {
         email: this.state.email,
         password: this.state.password,
         name: this.state.name,
+        age: this.state.age,
+        pet: this.state.pet,
         mbti: this.state.mbti
       })
     })

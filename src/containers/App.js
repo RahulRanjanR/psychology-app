@@ -46,12 +46,12 @@ const initialState = {
   user: {
     id: '',
     name: '',
+    age: 0,
+    pet: '',
     email: '',
     mbti: '',
     entries: 0,
     joined: '',
-    age: 0,
-    pet: ''
   }
 }
 
@@ -102,6 +102,8 @@ loadUser = (data) => {
   this.setState({user: {
     id: data.id,
     name: data.name,
+    age: data.age,
+    pet: data.pet,
     email: data.email,
     mbti: data.mbti,
     entries: data.entries,

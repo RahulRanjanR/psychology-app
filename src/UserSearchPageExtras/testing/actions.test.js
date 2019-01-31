@@ -11,7 +11,7 @@ import {
 
 const mockStore = configureMockStore([thunkMiddleware])
 
-it('should create an action to seacr robots', () => {
+it('should create an action to searchrobots', () => {
   const text = 'wooo';
   const expectedAction = {
     type: CHANGE_SEARCHFIELD,

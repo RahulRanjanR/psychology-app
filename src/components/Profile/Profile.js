@@ -33,12 +33,16 @@ class Profile extends Component {
     switch(event.target.name) {
       case 'user-name':
         this.setState({name: event.target.value})
+        console.log(this.name);
         break;
       case 'user-age':
         this.setState({age: event.target.value})
+        console.log(this.age);
+
         break;
       case 'user-pet':
         this.setState({pet: event.target.value})
+        console.log(this.pet);
         break;
       default:
         return;
