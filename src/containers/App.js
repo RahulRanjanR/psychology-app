@@ -64,7 +64,9 @@ class App extends Component {
 
   componentDidMount() {
     const token = window.sessionStorage.getItem('token');
+    console.log('Looking for a token!');
     if (token) {
+      console.log('Token Found && Refresh Page!!!');
       fetch('http://localhost:3000/signin', {
         method: 'POST',
         headers: {
@@ -145,7 +147,7 @@ onPictureSubmit = () => {
       })
       .then(response => response.json())
       .then(response => {
-        if (response) {
+        if (response ) {
           fetch('http://localhost:3000/image', {
             method: 'put',
             headers: {
@@ -184,15 +186,17 @@ onPictureSubmit = () => {
     }));
   }
 
+
+
   render() {
-    const  { isSignedIn, imageUrl, route, boxes, isProfileOpen, user  } = this.state;
+    const  { isSignedIn, imageUrl, route, boxes, isProfileOpen, user } = this.state;
       return (
         <div className="App">
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} toggleModal={this.toggleModal}/>
                 {
                   isProfileOpen &&
                   <Modal>
-                    <Profile isProfileOpen={isProfileOpen} toggleModal={this.toggleModal} user={user} loadUser={this.loadUser} />
+                    <Profile  isProfileOpen={isProfileOpen} toggleModal={this.toggleModal} user={user} loadUser={this.loadUser} />
                   </Modal>
                 }
                 {route === 'home'
