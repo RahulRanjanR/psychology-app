@@ -63,7 +63,7 @@ class Profile extends Component {
             <label className='mt2 fw6' htmlFor='user-name'>Name:</label>
             <input onChange={this.onFormChange} type='text' name='user-name' className='pa2 ba w-100' placeholder={name}></input>
 
-            {/*   Age & Pets Parameters to be fixed to update just like the name field 
+            {/*   Age & Pets Parameters to be fixed to update just like the name field
             <label className='mt2 fw6' htmlFor='user-age'>Age:</label>
             <input onChange={this.onFormChange} type='text' name='user-age' className='pa2 ba w-100' placeholder={age}></input>
             <label className='mt2 fw6' htmlFor='user-pet'>Favourite Pet:</label>
