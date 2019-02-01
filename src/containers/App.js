@@ -185,8 +185,38 @@ onPictureSubmit = () => {
       isProfileOpen: !state.isProfileOpen,
     }));
   }
+  signOut = () => {
+      this.removeAuthTokenInSessions(this.token);
+  }
 
+  //----------------------------------------------------------
 
+  saveAuthTokenInSessions = (token) => {
+    window.sessionStorage.setItem('token', token);
+  }
+   removeAuthTokenInSessions = (token) => {
+     window.sessionStorage.removeItem('token');
+   }
+
+  onSubmitSignIn = () => {
+    fetch('http://localhost:3000/signin', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        email: this.state.signInEmail,
+        password: this.state.signInPassword
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.success === "true") {
+          this.saveAuthTokenInSessions(data.token)
+          this.props.loadUser(data.user)
+          this.props.onRouteChange('home');
+        }
+      })
+      .catch(console.log)
+  }
 
   render() {
     const  { isSignedIn, imageUrl, route, boxes, isProfileOpen, user } = this.state;
@@ -196,7 +226,7 @@ onPictureSubmit = () => {
                 {
                   isProfileOpen &&
                   <Modal>
-                    <Profile  isProfileOpen={isProfileOpen} toggleModal={this.toggleModal} user={user} loadUser={this.loadUser} />
+                    <Profile  removeAuthTokenInSessions={this.saveAuthTokenInSessions} onSubmitSignIn={this.onSubmitSignIn}  isProfileOpen={isProfileOpen}  signOut={this.signOut} toggleModal={this.toggleModal} user={user} loadUser={this.loadUser} />
                   </Modal>
                 }
                 {route === 'home'
@@ -210,7 +240,7 @@ onPictureSubmit = () => {
                     :  (
                       route === 'signout'
                       ?
-                      <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+                      <Signin saveAuthTokenInSessions={this.saveAuthTokenInSessions} onSubmitSignIn={this.onSubmitSignIn} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
                       : (
                         route === 'quiz'
                         ?

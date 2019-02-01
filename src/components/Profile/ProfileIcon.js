@@ -1,6 +1,8 @@
 import React from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
+
+
 class ProfileIcon extends React.Component {
   constructor(props) {
     super(props);
@@ -8,12 +10,37 @@ class ProfileIcon extends React.Component {
       dropdownOpen: false
     };
   }
+  removeAuthTokenInSessions = (token) => {
+    window.sessionStorage.removeItem('token');
+  }
+  // onSubmitSignout = (data) => {
+  //   fetch(`http://localhost:3000/profile/${this.props.user.id}`, {
+  //     method: 'post',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': window.sessionStorage.getItem('token')
+  //     },
+  //     body: JSON.stringify({
+  //       formInput: data
+  //     })
+  //   }).then(resp => {
+  //     if (resp.status === 200 || resp.status === 304) {
+  //       this.props.toggleModal();
+  //       this.props.loadUser({ ...this.props.user, ...data });
+  //       console.log(this.token);
+  //     }
+  //   }).catch(console.log)
+  // }
+
+
+
 
   toggle = () => {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
     });
   }
+
 
   render() {
     return (
@@ -31,7 +58,7 @@ class ProfileIcon extends React.Component {
               </DropdownToggle>
               <DropdownMenu className='b--transparent shadow-5' style={{marginTop: '20px', backgroundColor: 'rgba(123, 255, 255, 0.5)'}} right>
                 <DropdownItem onClick={() => this.props.toggleModal()}>View Profile</DropdownItem>
-                <DropdownItem onClick={() => this.props.onRouteChange('signout')}>Sign Out</DropdownItem>
+                <DropdownItem onClick={this.ons}>Sign Out</DropdownItem>
               </DropdownMenu>
             </Dropdown>
       </div>
