@@ -19,7 +19,7 @@ jobs:
   hithere:
       docker:
         - image: circleci/node:8.9
-   steps:
+    steps:
      - checkout
      - run: echo "hellooooo!"
 workflows:
