@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import CounterButton from '../components/userSearchPage/CounterButton';
+import CounterButton from '../components/UserSearchPage/CounterButton';
 
 it('expect to render CounterButton component', () => {
 const mockColor = 'red'
