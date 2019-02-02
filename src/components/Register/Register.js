@@ -30,8 +30,6 @@ onSubmitSignin = () => {
     .then(response => response.json())
     .then(user => {
       if (user.id){
-        console.log('ayyee');
-        console.log(this.state.showPopup);
         setTimeout(this.props.onRouteChange, 5000, 'signin')
         this.setState({showPopup: true})
 

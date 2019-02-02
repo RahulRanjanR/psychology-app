@@ -29,14 +29,12 @@ render() {
   return  (
     <div>
         <div className='white f3'>
-          {`${this.props.name}, your current entry count is..`}
+          {`${this.props.name}, your current entry count is.. ${this.props.entries}`}
+          <div className='white f3'>
+            {`${this.state.emoji}` }
+          </div>
       </div>
-      <div className='white f1'>
-        {this.props.entries}
-      </div>
-      <div className='white f3'>
-        {`Rank Badge: ${this.state.emoji}` }
-      </div>
+
     </div>
     );
   }
