@@ -13,7 +13,6 @@ import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 import { requestRobots, searchRobots } from './UserSearchPageExtras/reducers'
 
-//logger
 const logger = createLogger()
 
 const rootReducers = combineReducers({requestRobots, searchRobots})
