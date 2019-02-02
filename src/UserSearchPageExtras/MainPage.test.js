@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import MainPage from '../components/UserSearchPage/Card/MainPage'
+import MainPage from '../components/UserSearchPage/MainPage'
 
 let wrapper;
 beforeEach(() => {
