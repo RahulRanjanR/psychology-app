@@ -48,7 +48,7 @@ class ProfileIcon extends React.Component {
   signingOut = ({token}) => {
     this.removeAuthTokenInSessions(this.props.token);
     console.log("signing out");
-    this.props.onRouteChange('signin');
+    this.props.onRouteChange('signout');
     }
 
 
