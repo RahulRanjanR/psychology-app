@@ -10,27 +10,31 @@ class ProfileIcon extends React.Component {
       dropdownOpen: false
     };
   }
+
+
   removeAuthTokenInSessions = (token) => {
     window.sessionStorage.removeItem('token');
   }
-  // onSubmitSignout = (data) => {
-  //   fetch(`http://localhost:3000/profile/${this.props.user.id}`, {
-  //     method: 'post',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': window.sessionStorage.getItem('token')
-  //     },
-  //     body: JSON.stringify({
-  //       formInput: data
-  //     })
-  //   }).then(resp => {
-  //     if (resp.status === 200 || resp.status === 304) {
-  //       this.props.toggleModal();
-  //       this.props.loadUser({ ...this.props.user, ...data });
-  //       console.log(this.token);
-  //     }
-  //   }).catch(console.log)
-  // }
+
+
+  onProfileUpdate = (data) => {
+    fetch(`http://localhost:3000/profile/${this.props.user.id}`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': window.sessionStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        formInput: data
+      })
+    }).then(resp => {
+      if (resp.status === 200 || resp.status === 304) {
+        this.removeAuthTokenInSessions(this.token);
+        this.props.loadUser({ ...this.props.user, ...data });
+        console.log(this.token);
+      }
+    }).catch(console.log)
+  }
 
 
 
@@ -41,11 +45,16 @@ class ProfileIcon extends React.Component {
     });
   }
 
+  signingOut = ({token}) => {
+    this.removeAuthTokenInSessions(this.props.token);
+    console.log("signing out");
+    }
+
 
   render() {
     return (
       <div className="pa4 tc">
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+            <Dropdown isOpen={this.state.dropdownOpen}  toggle={this.toggle}>
               <DropdownToggle
                 tag="span"
                 onClick={this.toggle}
@@ -58,7 +67,7 @@ class ProfileIcon extends React.Component {
               </DropdownToggle>
               <DropdownMenu className='b--transparent shadow-5' style={{marginTop: '20px', backgroundColor: 'rgba(123, 255, 255, 0.5)'}} right>
                 <DropdownItem onClick={() => this.props.toggleModal()}>View Profile</DropdownItem>
-                <DropdownItem onClick={this.ons}>Sign Out</DropdownItem>
+                <DropdownItem onClick={this.signingOut}>Sign Out</DropdownItem>
               </DropdownMenu>
             </Dropdown>
       </div>

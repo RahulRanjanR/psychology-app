@@ -11,10 +11,6 @@ class Profile extends Component {
     }
   }
 
-  removeAuthTokenInSessions = (token) => {
-    window.sessionStorage.removeItem('token');
-  }
-
   onProfileUpdate = (data) => {
     fetch(`http://localhost:3000/profile/${this.props.user.id}`, {
       method: 'post',
@@ -29,8 +25,6 @@ class Profile extends Component {
       if (resp.status === 200 || resp.status === 304) {
         this.props.toggleModal();
         this.props.loadUser({ ...this.props.user, ...data });
-        this.removeAuthTokenInSessions(this.token);
-        console.log(this.token);
       }
     }).catch(console.log)
   }

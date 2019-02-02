@@ -190,33 +190,33 @@ onPictureSubmit = () => {
   }
 
   //----------------------------------------------------------
+  // 
+  // saveAuthTokenInSessions = (token) => {
+  //   window.sessionStorage.setItem('token', token);
+  // }
+  //  removeAuthTokenInSessions = (token) => {
+  //    window.sessionStorage.removeItem('token');
+  //  }
 
-  saveAuthTokenInSessions = (token) => {
-    window.sessionStorage.setItem('token', token);
-  }
-   removeAuthTokenInSessions = (token) => {
-     window.sessionStorage.removeItem('token');
-   }
-
-  onSubmitSignIn = () => {
-    fetch('http://localhost:3000/signin', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: this.state.signInEmail,
-        password: this.state.signInPassword
-      })
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data && data.success === "true") {
-          this.saveAuthTokenInSessions(data.token)
-          this.props.loadUser(data.user)
-          this.props.onRouteChange('home');
-        }
-      })
-      .catch(console.log)
-  }
+  // onSubmitSignIn = () => {
+  //   fetch('http://localhost:3000/signin', {
+  //     method: 'post',
+  //     headers: {'Content-Type': 'application/json'},
+  //     body: JSON.stringify({
+  //       email: this.state.signInEmail,
+  //       password: this.state.signInPassword
+  //     })
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       if (data && data.success === "true") {
+  //         this.saveAuthTokenInSessions(data.token)
+  //         this.props.loadUser(data.user)
+  //         this.props.onRouteChange('home');
+  //       }
+  //     })
+  //     .catch(console.log)
+  // }
 
   render() {
     const  { isSignedIn, imageUrl, route, boxes, isProfileOpen, user } = this.state;
