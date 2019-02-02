@@ -1,31 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders MainPage without crashing 1`] = `
+exports[`renders without crashing 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <MainPage
     isPending={false}
-    onRequestRobots={
-      [MockFunction] {
-        "calls": Array [
-          Array [],
-        ],
-        "results": Array [
-          Object {
-            "isThrow": false,
-            "value": undefined,
-          },
-        ],
-      }
-    }
+    onRequestRobots={[Function]}
     robots={Array []}
     searchField=""
-  />,
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
-    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -35,15 +23,19 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <Header />,
-        <SearchBox />,
+        <Header
+          count={1}
+/>,
+        <SearchBox
+          searchChange={undefined}
+/>,
         <Scroll>
           <ErrorBoundary>
-            <CardList
-              robots={Array []}
-            />
+                    <CardList
+                              robots={Array []}
+                    />
           </ErrorBoundary>
-        </Scroll>,
+</Scroll>,
       ],
       "className": "tc",
     },
@@ -53,7 +45,9 @@ ShallowWrapper {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
-        "props": Object {},
+        "props": Object {
+          "count": 1,
+        },
         "ref": null,
         "rendered": null,
         "type": [Function],
@@ -76,9 +70,9 @@ ShallowWrapper {
         "props": Object {
           "children": <ErrorBoundary>
             <CardList
-              robots={Array []}
+                        robots={Array []}
             />
-          </ErrorBoundary>,
+</ErrorBoundary>,
         },
         "ref": null,
         "rendered": Object {
@@ -88,7 +82,7 @@ ShallowWrapper {
           "props": Object {
             "children": <CardList
               robots={Array []}
-            />,
+/>,
           },
           "ref": null,
           "rendered": Object {
@@ -116,15 +110,19 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Header />,
-          <SearchBox />,
+          <Header
+            count={1}
+/>,
+          <SearchBox
+            searchChange={undefined}
+/>,
           <Scroll>
             <ErrorBoundary>
-              <CardList
-                robots={Array []}
-              />
+                        <CardList
+                                    robots={Array []}
+                        />
             </ErrorBoundary>
-          </Scroll>,
+</Scroll>,
         ],
         "className": "tc",
       },
@@ -134,7 +132,9 @@ ShallowWrapper {
           "instance": null,
           "key": undefined,
           "nodeType": "class",
-          "props": Object {},
+          "props": Object {
+            "count": 1,
+          },
           "ref": null,
           "rendered": null,
           "type": [Function],
@@ -157,9 +157,9 @@ ShallowWrapper {
           "props": Object {
             "children": <ErrorBoundary>
               <CardList
-                robots={Array []}
+                            robots={Array []}
               />
-            </ErrorBoundary>,
+</ErrorBoundary>,
           },
           "ref": null,
           "rendered": Object {
@@ -169,7 +169,7 @@ ShallowWrapper {
             "props": Object {
               "children": <CardList
                 robots={Array []}
-              />,
+/>,
             },
             "ref": null,
             "rendered": Object {
@@ -195,16 +195,6 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getDerivedStateFromProps": true,
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
       },
     },
   },

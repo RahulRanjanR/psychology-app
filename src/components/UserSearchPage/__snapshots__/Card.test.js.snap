@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`expect to render Card component 1`] = `
+exports[`renders without crashing 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Card />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
-    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -21,13 +21,13 @@ ShallowWrapper {
         <img
           alt="robots"
           src="https://robohash.org/undefined?size=200x200"
-        />,
+/>,
         <div>
           <h2 />
           <p />
-        </div>,
+</div>,
       ],
-      "className": "tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5",
+      "className": "tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5",
     },
     "ref": null,
     "rendered": Array [
@@ -93,13 +93,13 @@ ShallowWrapper {
           <img
             alt="robots"
             src="https://robohash.org/undefined?size=200x200"
-          />,
+/>,
           <div>
             <h2 />
             <p />
-          </div>,
+</div>,
         ],
-        "className": "tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5",
+        "className": "tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5",
       },
       "ref": null,
       "rendered": Array [
@@ -160,16 +160,6 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getDerivedStateFromProps": true,
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
       },
     },
   },
