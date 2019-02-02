@@ -48,6 +48,7 @@ class ProfileIcon extends React.Component {
   signingOut = ({token}) => {
     this.removeAuthTokenInSessions(this.props.token);
     console.log("signing out");
+    this.props.onRouteChange('signin');
     }
 
 
@@ -62,10 +63,10 @@ class ProfileIcon extends React.Component {
                 aria-expanded={this.state.dropdownOpen}
               >
                 <img
-                  src="http://tachyons.io/img/logo.jpg"
-                  className="br-100 h3 w3 dib" alt="avatar" />
+                  src={`https://robohash.org/${this.props.id}?set=set2`}
+                  className="br-100 ba bw1 h3 w3 dib" alt="avatar" />
               </DropdownToggle>
-              <DropdownMenu className='b--transparent shadow-5' style={{marginTop: '20px', backgroundColor: 'rgba(123, 255, 255, 0.5)'}} right>
+              <DropdownMenu className='b--transparent shadow-5' style={{marginTop: '20px', backgroundColor: 'rgba(123, 200, 255, 0.5)'}} right>
                 <DropdownItem onClick={() => this.props.toggleModal()}>View Profile</DropdownItem>
                 <DropdownItem onClick={this.signingOut}>Sign Out</DropdownItem>
               </DropdownMenu>
