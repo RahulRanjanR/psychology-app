@@ -17,7 +17,7 @@ class Register extends React.Component {
 
 // checking before setting up a new user and allowing the popup to show
 onSubmitSignin = () => {
-    fetch('http://localhost:3000/register',{
+    fetch('https://warm-woodland-74542.herokuapp.com/register',{
       method: 'post',
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify({

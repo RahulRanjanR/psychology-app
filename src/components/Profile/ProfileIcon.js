@@ -18,7 +18,7 @@ class ProfileIcon extends React.Component {
 
 
   onProfileUpdate = (data) => {
-    fetch(`http://localhost:3000/profile/${this.props.user.id}`, {
+    fetch(`https://warm-woodland-74542.herokuapp.com/profile/${this.props.user.id}`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

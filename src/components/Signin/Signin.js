@@ -1,32 +1,32 @@
-import React from 'react';
-import './Signin.css';
-import { ColoredLine } from '../../containers/QuizPage';
+import React from "react";
+import "./Signin.css";
+import { ColoredLine } from "../../containers/QuizPage";
 
 class Signin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      signInEmail: '',
-      signInPassword: ''
-    }
+      signInEmail: "",
+      signInPassword: ""
+    };
   }
 
-  onEmailChange = (event) => {
-    this.setState({signInEmail: event.target.value})
-  }
+  onEmailChange = event => {
+    this.setState({ signInEmail: event.target.value });
+  };
 
-  onPasswordChange = (event) => {
-    this.setState({signInPassword: event.target.value})
-  }
+  onPasswordChange = event => {
+    this.setState({ signInPassword: event.target.value });
+  };
 
-  saveAuthTokenInSessions = (token) => {
-    window.sessionStorage.setItem('token', token);
-  }
+  saveAuthTokenInSessions = token => {
+    window.sessionStorage.setItem("token", token);
+  };
 
   onSubmitSignIn = () => {
-    fetch('http://localhost:3000/signin', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
+    fetch("https://warm-woodland-74542.herokuapp.com/signin", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: this.state.signInEmail,
         password: this.state.signInPassword
@@ -35,14 +35,14 @@ class Signin extends React.Component {
       .then(response => response.json())
       .then(data => {
         if (data && data.success === "true") {
-          this.saveAuthTokenInSessions(data.token)
+          this.saveAuthTokenInSessions(data.token);
           console.log(this.data);
-          this.props.loadUser(data.user)
-          this.props.onRouteChange('home');
+          this.props.loadUser(data.user);
+          this.props.onRouteChange("home");
         }
       })
-      .catch(console.log)
-  }
+      .catch(console.log);
+  };
 
   render() {
     const { onRouteChange } = this.props;
@@ -54,7 +54,9 @@ class Signin extends React.Component {
               <legend className="f1 fw6 ph0 mh0">Sign In</legend>
               <ColoredLine color="black" />
               <div className="mt3">
-                <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+                <label className="db fw6 lh-copy f6" htmlFor="email-address">
+                  Email
+                </label>
                 <input
                   className="pa2 input-reset ba calming-text-field hover-bg-black hover-white w-100 hover-black"
                   type="email"
@@ -64,7 +66,9 @@ class Signin extends React.Component {
                 />
               </div>
               <div className="mv3">
-                <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
+                <label className="db fw6 lh-copy f6" htmlFor="password">
+                  Password
+                </label>
                 <input
                   className="b pa2 input-reset ba calming-text-field hover-bg-black hover-white w-100 hover-black"
                   type="password"
@@ -82,11 +86,14 @@ class Signin extends React.Component {
                 value="Sign in"
               />
               <ColoredLine color="black" />
-
-
             </div>
             <div className="lh-copy mt3">
-              <p  onClick={() => onRouteChange('register')} className="f6 link dim black db pointer">Register</p>
+              <p
+                onClick={() => onRouteChange("register")}
+                className="f6 link dim black db pointer"
+              >
+                Register
+              </p>
             </div>
           </div>
         </main>
